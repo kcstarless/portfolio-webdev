@@ -1,0 +1,26 @@
+// Use Sass modules (variables, mixins, etc.)
+@use "variables";
+@use "resets";
+
+// Layout
+@use "./layout/container";
+@use "./layout/content";
+@use "./layout/header";
+@use "./layout/footer";
+
+// Components
+@use "./components/link";
+
+// Import external resources (Google Fonts)
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"); // Dancing Script
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"); // Lexend
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap"); // Poppins
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap"); // Bangers
+@import url("https://fonts.googleapis.com/css2?family=Monofett&display=swap"); //Monofett
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"); // Paytone One
+@import url("https://fonts.googleapis.com/css2?family=Rampart+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");

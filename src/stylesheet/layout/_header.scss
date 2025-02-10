@@ -1,0 +1,53 @@
+@use "../mixins" as *;
+
+.logo-container {
+  display: flex;
+  font-size: var(--font-size-xl);
+  color: #b7ab98;
+
+  .logo-text {
+    // border: solid 2px white;
+    display: flex; /* Use flexbox to arrange the letters horizontally */
+    flex-direction: row;
+    align-items: flex-end; /* Align the letters to the bottom */
+    overflow: hidden;
+    padding: 0px 1px 0px 3px;
+  }
+  .logo-text.small {
+    border: solid 2px #b7ab98; /* Initially, the border is transparent */
+    // transition: all 1s ease-in-out; /* Delay for all transitions */
+    transition-delay: 5s; /* Delay the appearance of the border */
+    padding: 0px 4px 0px 5px;
+    border-radius: var(--border-round);
+  }
+  .letter {
+    letter-spacing: 1px;
+    display: "inline-block"; // Ensure each letter is treated as a block
+    height: "1em"; // Height matches the text height
+    line-height: "1"; // Vertically center the letter within its height
+  }
+
+  .logo-text:hover {
+    color: white;
+  }
+}
+
+.menu-container {
+  display: flex;
+  gap: var(--space-xl);
+
+  font-size: var(--font-size-xs);
+  color: grey;
+
+  .menu-item {
+    display: flex; /* Use flexbox to arrange the letters horizontally */
+    flex-direction: row;
+    align-items: flex-end; /* Align the letters to the bottom */
+    overflow: hidden;
+  }
+
+  .letter {
+    // letter-spacing: var(--space-xxxxxs);
+    display: "inline-block"; // Ensure each letter is treated as a block
+  }
+}

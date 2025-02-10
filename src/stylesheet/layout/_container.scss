@@ -1,0 +1,33 @@
+@use "../mixins" as *;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  padding: var(--space-l);
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+
+  font-family: "Inter";
+  font-weight: 800;
+
+  z-index: 100;
+  transition: top 1s ease-in;
+  // border: solid 1px red;
+}
+
+.scrolled-to-project {
+  top: 60px;
+  transition: top 1s ease-in-out;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // border: solid 1px white;
+  height: 100vh;
+}
