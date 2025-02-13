@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { textAbout, textAboutMask } from "../helpers/textHelper";
 import useMousePosition from "../hooks/useMousePosition";
 import { useRef, useEffect, useState } from "react";
+import { LandingCanvas } from "../components/landing/LandingCanvas";
 
 const LandingPage = () => {
   const { x, y } = useMousePosition();
@@ -26,6 +27,7 @@ const LandingPage = () => {
 
   return (
     <section id="about">
+      <LandingCanvas />
       <motion.div className="about-text" data-scroll data-scroll-speed="0.1">
         <div
           className="pre-mask"

@@ -1,20 +1,13 @@
-import { useEffect } from "react";
+import { FooterPage } from "./FooterPage";
 import LandingPage from "./LandingPage";
 import ProjectPage from "./ProjectPage";
-import TransitionPage from "./ProjectPage";
 
 const Content = () => {
-  useEffect(() => {
-    async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
-    };
-  }, []);
-
   return (
     <>
       <LandingPage />
       <ProjectPage />
+      <FooterPage />
     </>
   );
 };

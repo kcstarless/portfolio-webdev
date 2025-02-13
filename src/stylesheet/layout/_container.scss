@@ -4,7 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: transparent;
-  padding: var(--space-l);
+  padding: var(--space-m);
   align-items: center;
 
   position: sticky;
@@ -18,16 +18,47 @@ header {
   // border: solid 1px red;
 }
 
-.scrolled-to-project {
-  top: 60px;
-  transition: top 1s ease-in-out;
-}
-
 section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // border: solid 1px white;
   height: 100vh;
+}
+
+// Sticky footer
+footer {
+  height: 15vh;
+  background-color: var(--color-secondary);
+  color: rgb(65, 65, 65);
+  position: relative;
+  clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 80% 100%);
+
+  .footer-container {
+    height: calc(100vh + 15vh);
+    top: -100vh;
+    width: 100%;
+    position: relative;
+
+    .footer-content {
+      top: calc(100vh - 15vh);
+      height: 15vh;
+      position: sticky;
+      text-align: right;
+
+      padding-right: 2vh;
+      padding-bottom: 2vh;
+
+      display: flex;
+      justify-content: end;
+      align-items: end;
+
+      .footer-items {
+        p {
+          font-weight: 700;
+          font-size: 1.7vh;
+        }
+      }
+    }
+  }
 }
