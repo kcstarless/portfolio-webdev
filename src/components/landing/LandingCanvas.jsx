@@ -13,7 +13,7 @@ const Points = () => {
   const { camera } = useThree();
 
   // State to track the color of points
-  const [color, setColor] = useState(new THREE.Color(0x00aaff));
+  const [color, setColor] = useState(new THREE.Color(0xb7ab98));
 
   // Effect parameters
   const count = 100;
