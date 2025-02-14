@@ -21,9 +21,9 @@ export const textAbout = () => {
         INDEPENDENT <span className="backend">BACK-END</span>
       </div>
       <div>{`<%= DEVELOPER %>`}</div>
-      <div>CURRENTLY GOING THROUGH SERVER LOGS</div>
-      <div>OPTIMISING QUERY</div>
-      <div>TESTING, STAGING & DEPLOYING...</div>
+      <div>DEVELOPING API</div>
+      <div>MANAGING DATA</div>
+      <div>OPTIMIZING & DEPLOYING...</div>
     </>
   );
 };
@@ -34,7 +34,7 @@ export const textAboutMask = () => {
       <div className="t1">
         CREATIVE <span className="frontend">FRONT-END</span>
       </div>
-      <div className="t2">{`<Developer props={style.props} />`}</div>
+      <div className="t2">{`<Developer id={style.dev} />`}</div>
       <div className="t3">PLAYING WITH 3D</div>
       <div className="t4">ADDING SUBTLE ANIMATION</div>
       <div className="t5">BRINGING IDEAS TO LIFE!</div>

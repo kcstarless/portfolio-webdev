@@ -132,7 +132,7 @@ const Points = () => {
         attach="material"
         map={imgTexture}
         color={color} // Dynamically set color here
-        size={1.5}
+        size={2}
         sizeAttenuation={true}
         transparent={true}
         alphaTest={0.05}
@@ -146,7 +146,7 @@ const Points = () => {
 const AnimatedCanvas = () => {
   return (
     <Canvas
-      camera={{ position: [0, 320, 0], fov: 60 }}
+      camera={{ position: [0, 320, 0], fov: 65 }}
       gl={{ antialias: true }}
     >
       <Suspense fallback={null}>
