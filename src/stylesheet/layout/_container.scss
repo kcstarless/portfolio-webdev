@@ -1,5 +1,12 @@
 @use "../mixins" as *;
 
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 0; /* Makes wrapper invisible for layout purposes */
+  z-index: 100; /* Same as header's original z-index */
+}
+
 header {
   display: flex;
   justify-content: space-between;

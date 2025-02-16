@@ -34,7 +34,7 @@ const HeaderBar = () => {
   }, [scrollYProgress, isExpanded]);
 
   return (
-    <>
+    <div className="sticky-wrapper">
       <motion.header>
         <div className="logo-container">
           <div
@@ -62,7 +62,7 @@ const HeaderBar = () => {
           </div>
         </div>
       </motion.header>
-    </>
+    </div>
   );
 };
 
