@@ -28,7 +28,8 @@
   }
 
   .logo-text:hover {
-    color: white;
+    cursor: pointer;
+    color: var(--color-text-header);
   }
 }
 
@@ -45,7 +46,6 @@
     align-items: flex-end; /* Align the letters to the bottom */
     overflow: hidden;
   }
-
   .letter {
     // letter-spacing: var(--space-xxxxxs);
     display: "inline-block"; // Ensure each letter is treated as a block
