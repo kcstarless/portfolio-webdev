@@ -37,9 +37,8 @@ const ProjectCanvas = () => {
       };
       const handleTouchMove = (event) => {
         // For mobile devices, use touch events to simulate the wheel scroll
-        const touchMovement =
-          event.touches[0].clientY - event.touches[0].screenY;
-        if (touchMovement > 0) {
+
+        if (event.deltaY > 0) {
           // Scroll Down: rotate clockwise (positive speed)
           setRotationSpeed(0.1);
         } else {
