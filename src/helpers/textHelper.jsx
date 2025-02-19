@@ -23,7 +23,7 @@ export const textAbout = () => {
       <div>{`<%= DEVELOPER %>`}</div>
       <div>DEVELOPING API</div>
       <div>MANAGING DATA</div>
-      <div>OPTIMIZING & DEPLOYING...</div>
+      <div>OPTIMISING & DEPLOYING...</div>
     </>
   );
 };
