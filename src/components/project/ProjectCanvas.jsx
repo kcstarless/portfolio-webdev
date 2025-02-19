@@ -35,13 +35,25 @@ const ProjectCanvas = () => {
           setRotationSpeed(-0.1);
         }
       };
-
+      const handleTouchMove = (event) => {
+        // For mobile devices, use touch events to simulate the wheel scroll
+        const touchMovement =
+          event.touches[0].clientY - event.touches[0].screenY;
+        if (touchMovement > 0) {
+          // Scroll Down: rotate clockwise (positive speed)
+          setRotationSpeed(0.1);
+        } else {
+          // Scroll Up: rotate counterclockwise (negative speed)
+          setRotationSpeed(-0.1);
+        }
+      };
       // Add wheel event listener to the canvas container
       window.addEventListener("wheel", handleWheel);
-
+      window.addEventListener("touchmove", handleTouchMove);
       // Cleanup event listener on component unmount
       return () => {
         window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener("touchmove", handleTouchMove);
       };
     }, []); // Empty dependency array ensures this effect runs once when the component mounts
 
