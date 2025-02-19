@@ -23,8 +23,11 @@ const ProjectCanvas = () => {
       ref.current.rotation.y += rotationSpeed * delta;
     });
 
-    // Handle mouse scroll to change rotation speed direction
+    // Handle mouse scroll or touch move to change rotation speed direction
     useEffect(() => {
+      let lastTouchY = 0; // To track the last Y position of the touch
+      let isTouching = false;
+
       const handleWheel = (event) => {
         // If scroll is down, rotate in one direction; if scroll is up, rotate in the opposite direction
         if (event.deltaY > 0) {
@@ -35,24 +38,50 @@ const ProjectCanvas = () => {
           setRotationSpeed(-0.1);
         }
       };
-      const handleTouchMove = (event) => {
-        // For mobile devices, use touch events to simulate the wheel scroll
 
-        if (event.deltaY > 0) {
-          // Scroll Down: rotate clockwise (positive speed)
+      const handleTouchStart = (event) => {
+        // Store the starting position of the touch
+        lastTouchY = event.touches[0].clientY;
+        isTouching = true;
+      };
+
+      const handleTouchMove = (event) => {
+        if (!isTouching) return;
+
+        // Get the current touch position
+        const currentTouchY = event.touches[0].clientY;
+
+        // Compare current position with the last position to determine swipe direction
+        if (currentTouchY > lastTouchY) {
+          // Swiping down: rotate clockwise (positive speed)
           setRotationSpeed(0.1);
-        } else {
-          // Scroll Up: rotate counterclockwise (negative speed)
+        } else if (currentTouchY < lastTouchY) {
+          // Swiping up: rotate counterclockwise (negative speed)
           setRotationSpeed(-0.1);
         }
+
+        // Update lastTouchY for the next comparison
+        lastTouchY = currentTouchY;
       };
-      // Add wheel event listener to the canvas container
+
+      const handleTouchEnd = () => {
+        isTouching = false;
+      };
+
+      // Add wheel event listener to the window for desktop scroll
       window.addEventListener("wheel", handleWheel);
+
+      // Add touch events for mobile devices
+      window.addEventListener("touchstart", handleTouchStart);
       window.addEventListener("touchmove", handleTouchMove);
-      // Cleanup event listener on component unmount
+      window.addEventListener("touchend", handleTouchEnd);
+
+      // Cleanup event listeners on component unmount
       return () => {
         window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener("touchstart", handleTouchStart);
         window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchend", handleTouchEnd);
       };
     }, []); // Empty dependency array ensures this effect runs once when the component mounts
 
