@@ -24,7 +24,7 @@ const Points = () => {
   const mouseStrength = 10;
   const mouseWaveSpeed = 5;
 
-  // Mouse tracking
+  // Mouse and touch tracking
   useEffect(() => {
     const handleMouseMove = (event) => {
       const vector = new THREE.Vector3(
@@ -39,9 +39,21 @@ const Points = () => {
       mousePosRef.current = pos;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    const handleTouchMove = (event) => {
+      // Only track the first touch
+      const touch = event.touches[0];
+      const vector = new THREE.Vector3(
+        (touch.clientX / window.innerWidth) * 2 - 1,
+        -(touch.clientY / window.innerHeight) * 2 + 1,
+        0.5
+      );
+      vector.unproject(camera);
+      const dir = vector.sub(camera.position).normalize();
+      const distance = -camera.position.y / dir.y;
+      const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+      mousePosRef.current = pos;
+    };
 
-    // Event listener for mouse click to change color
     const handleMouseClick = () => {
       // Change the color of points randomly upon mouse click
       const randomColor = new THREE.Color(
@@ -52,11 +64,20 @@ const Points = () => {
       setColor(randomColor);
     };
 
+    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("click", handleMouseClick);
+
+    // Touch event listeners
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("click", handleMouseClick);
+
+      // Cleanup touch events
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
     };
   }, [camera]);
 
