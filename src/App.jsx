@@ -5,8 +5,8 @@ import HeaderBar from "./components/HeaderBar";
 function App() {
   return (
     <>
+      <HeaderBar />
       <SmoothScroll>
-        <HeaderBar />
         <Content />
       </SmoothScroll>
     </>
