@@ -3,7 +3,11 @@
 .logo-container {
   display: flex;
   font-size: var(--font-size-xl);
-  color: #b7ab98;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5),
+    /* Shadow to the bottom-right */ -1px 1px 3px rgba(0, 0, 0, 0.5),
+    /* Shadow to the bottom-left */ -1px -1px 3px rgba(0, 0, 0, 0.5),
+    /* Shadow to the top-left */ 1px -1px 3px rgba(0, 0, 0, 0.5); /* Shadow to the top-right */
 
   .logo-text {
     // border: solid 2px white;
@@ -11,10 +15,10 @@
     flex-direction: row;
     align-items: flex-end; /* Align the letters to the bottom */
     overflow: hidden;
-    padding: 0px 1px 0px 3px;
+    // padding: 0px 1px 0px 3px;
   }
   .logo-text.small {
-    border: solid 2px #b7ab98; /* Initially, the border is transparent */
+    border: solid 3px rgb(252, 250, 250); /* Border with white color */
     // transition: all 1s ease-in-out; /* Delay for all transitions */
     transition-delay: 5s; /* Delay the appearance of the border */
     padding: 0px 4px 0px 5px;
@@ -35,19 +39,21 @@
 
 .menu-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: var(--space-xl);
 
-  font-size: var(--font-size-xs);
-  color: grey;
+  font-size: var(--font-size-s);
 
   .menu-item {
     display: flex; /* Use flexbox to arrange the letters horizontally */
     flex-direction: row;
     align-items: flex-end; /* Align the letters to the bottom */
     overflow: hidden;
+    padding: var(--space-xxs);
   }
   .letter {
-    // letter-spacing: var(--space-xxxxxs);
+    letter-spacing: var(--space-xxxxxs);
     display: "inline-block"; // Ensure each letter is treated as a block
   }
 }

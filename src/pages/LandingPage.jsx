@@ -56,6 +56,7 @@ const LandingPage = () => {
 
   return (
     <section id="about">
+      <div className="veil"></div>
       <LandingCanvas />
       <motion.div className="about-text" data-scroll data-scroll-speed="0.1">
         <div
@@ -71,33 +72,6 @@ const LandingPage = () => {
           onTouchEnd={handleTouchEnd} // Handle touch end for mobile
         >
           {textAbout()}
-        </div>
-      </motion.div>
-
-      <motion.div
-        ref={maskRef} // Assign ref to the element
-        className="about-text-mask"
-        animate={{
-          WebkitMaskPosition: `${maskPosition.x - size / 2}px ${
-            maskPosition.y - size / 2
-          }px`, // Apply the calculated position
-          WebkitMaskSize: `${size}px`,
-        }}
-        transition={{ type: "tween", ease: "backOut" }}
-      >
-        <div
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          onTouchStart={handleTouchStart} // Handle touch start for mobile
-          onTouchMove={handleTouchMove} // Handle touch move for mobile
-          onTouchEnd={handleTouchEnd} // Handle touch end for mobile
-          className="mask"
-        >
-          {textAboutMask()}
         </div>
       </motion.div>
     </section>

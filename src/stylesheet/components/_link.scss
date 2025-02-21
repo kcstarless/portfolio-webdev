@@ -1,9 +1,12 @@
 a {
   display: inline-block;
   position: relative;
-  color: #b7ab98; /* Original color of the text */
+  color: white; /* Original color of the text */
   text-decoration: none;
   overflow: hidden; /* Hide content that goes out of bounds */
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.589),
+    /* Shadow below */ 0px -1px 1px rgba(0, 0, 0, 0.603),
+    /* Shadow above */ 0px 1px 1px rgba(0, 0, 0, 0.582);
 }
 
 a span {
@@ -18,7 +21,6 @@ a::before {
   top: 100%; /* Start below the original text */
   left: 0;
   width: 100%;
-  color: var(--color-text-header); /* New text color */
   opacity: 0; /* Start as invisible */
   transition: transform 0.6s ease, opacity 0.6s ease; /* Transition for new text */
 }

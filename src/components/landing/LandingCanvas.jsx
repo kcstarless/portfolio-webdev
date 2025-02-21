@@ -1,189 +1,72 @@
-import styles from "./style.module.scss";
+import React, { useRef, useMemo } from "react";
 import * as THREE from "three";
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { Suspense, useMemo, useRef, useEffect, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { vertexShader, fragmentShader } from "./shaders";
+import styles from "./style.module.scss";
+import { OrbitControls } from "@react-three/drei";
 
-import circleImage from "../../assets/images/circle.png";
+// Fluid-like Blob Component
+const Blob = ({ position, size }) => {
+  const meshRef = useRef();
 
-const Points = () => {
-  const imgTexture = useLoader(THREE.TextureLoader, circleImage);
-  const bufferRef = useRef();
-  const tRef = useRef(0);
-  const mousePosRef = useRef(new THREE.Vector3(0, 0, 0));
-  const { camera } = useThree();
+  const uniforms = useMemo(
+    () => ({
+      u_time: { value: 0.0 },
+      u_speed: { value: 0.5 },
+      u_intensity: { value: 1 },
+      u_colorSpeed: { value: 1 },
+    }),
+    []
+  );
 
-  // State to track the color of points
-  const [color, setColor] = useState(new THREE.Color(0xb7ab98));
-
-  // Effect parameters
-  const count = 100;
-  const sep = 3;
-  const f = 0.0002;
-  const a = 60;
-  const mouseInfluenceRadius = 28;
-  const mouseStrength = 10;
-  const mouseWaveSpeed = 5;
-
-  // Mouse and touch tracking
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      const vector = new THREE.Vector3(
-        (event.clientX / window.innerWidth) * 2 - 1,
-        -(event.clientY / window.innerHeight) * 2 + 1,
-        0.5
-      );
-      vector.unproject(camera);
-      const dir = vector.sub(camera.position).normalize();
-      const distance = -camera.position.y / dir.y;
-      const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-      mousePosRef.current = pos;
-    };
-
-    const handleTouchMove = (event) => {
-      // Only track the first touch
-      const touch = event.touches[0];
-      const vector = new THREE.Vector3(
-        (touch.clientX / window.innerWidth) * 2 - 1,
-        -(touch.clientY / window.innerHeight) * 2 + 1,
-        0.5
-      );
-      vector.unproject(camera);
-      const dir = vector.sub(camera.position).normalize();
-      const distance = -camera.position.y / dir.y;
-      const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-      mousePosRef.current = pos;
-    };
-
-    const handleMouseClick = () => {
-      // Change the color of points randomly upon mouse click
-      const randomColor = new THREE.Color(
-        Math.random(),
-        Math.random(),
-        Math.random()
-      );
-      setColor(randomColor);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("click", handleMouseClick);
-
-    // Touch event listeners
-    window.addEventListener("touchmove", handleTouchMove);
-    window.addEventListener("touchstart", handleTouchMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("click", handleMouseClick);
-
-      // Cleanup touch events
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchstart", handleTouchMove);
-    };
-  }, [camera]);
-
-  // Initialize positions
-  const positions = useMemo(() => {
-    const posArray = new Float32Array(count * count * 3);
-    let i = 0;
-    for (let xi = 0; xi < count; xi++) {
-      for (let zi = 0; zi < count; zi++) {
-        const x = sep * (xi - count / 2);
-        const z = sep * (zi - count / 2);
-        posArray[i] = x;
-        posArray[i + 1] = 0;
-        posArray[i + 2] = z;
-        i += 3;
-      }
-    }
-    return posArray;
-  }, [count, sep]);
-
-  // Animation frame
-  useFrame(({ clock }) => {
-    const time = clock.getElapsedTime();
-    tRef.current = time * 50;
-    const positions = bufferRef.current.array;
-    const mouseX = mousePosRef.current.x;
-    const mouseZ = mousePosRef.current.z;
-
-    let i = 0;
-    for (let xi = 0; xi < count; xi++) {
-      for (let zi = 0; zi < count; zi++) {
-        const x = sep * (xi - count / 2);
-        const z = sep * (zi - count / 2);
-
-        // Base wave motion
-        let y = Math.sin(f * (x ** 2 + z ** 2 + tRef.current)) * a;
-
-        // Mouse interaction
-        const dx = x - mouseX;
-        const dz = z - mouseZ;
-        const distance = Math.sqrt(dx * dx + dz * dz);
-        const falloff = Math.max(0, 1 - distance / mouseInfluenceRadius);
-
-        // Strong displacement effects
-        y +=
-          Math.sin(time * mouseWaveSpeed - distance * 0.5) *
-          falloff *
-          mouseStrength *
-          2;
-
-        y -= 30 * falloff * Math.min(1, distance * 0.3);
-
-        positions[i + 1] = y;
-        i += 3;
-      }
-    }
-
-    bufferRef.current.needsUpdate = true;
+  useFrame((state) => {
+    const { clock } = state;
+    meshRef.current.material.uniforms.u_time.value = clock.getElapsedTime();
   });
 
   return (
-    <points>
-      <bufferGeometry attach="geometry">
-        <bufferAttribute
-          ref={bufferRef}
-          attach="attributes-position"
-          array={positions}
-          count={count * count}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        attach="material"
-        map={imgTexture}
-        color={color} // Dynamically set color here
-        size={3}
-        sizeAttenuation={true}
-        transparent={true}
-        alphaTest={0.05}
-        opacity={1}
-        blending={THREE.AdditiveBlending}
+    <mesh ref={meshRef} position={position}>
+      <sphereGeometry args={[size, 64, 64]} />
+      <shaderMaterial
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={uniforms}
       />
-    </points>
+    </mesh>
   );
 };
 
-const AnimatedCanvas = () => {
+// Scene Component with Camera Controls
+const Scene = () => {
+  const sceneRef = useRef();
+
+  useFrame((state, delta) => {
+    sceneRef.current.rotation.y += delta * 0.2;
+    sceneRef.current.rotation.x += delta * 0.1;
+    sceneRef.current.rotation.z += delta * 0.1;
+  });
+
   return (
-    <Canvas
-      camera={{ position: [0, 320, 0], fov: 25 }}
-      gl={{ antialias: true }}
-    >
-      <Suspense fallback={null}>
-        <ambientLight intensity={1.2} />
-        <Points />
-      </Suspense>
-    </Canvas>
+    <group ref={sceneRef}>
+      <ambientLight intensity={0.2} />
+      <directionalLight
+        position={[0, 5, 5]} // Light coming from above and behind the camera
+        intensity={1.5}
+        castShadow
+      />
+      <Blob position={[0, 0, 0]} size={1.2} />
+    </group>
   );
 };
 
+// Landing Canvas with Style
 export const LandingCanvas = () => {
   return (
     <div className={styles.container}>
-      <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
-        <AnimatedCanvas />
-      </Suspense>
+      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+        <Scene />
+        <OrbitControls /> {/* Keep or remove based on need */}
+      </Canvas>
     </div>
   );
 };

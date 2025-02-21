@@ -5,7 +5,7 @@ import {
   menuTextAnimation,
 } from "../helpers/textAnimationHelper";
 
-const logoExtended = "DAVID GIM";
+const logoExtended = "";
 const logoShortened = "D";
 
 const HeaderBar = () => {

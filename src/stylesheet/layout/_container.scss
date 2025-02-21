@@ -4,15 +4,15 @@
   position: sticky;
   top: 0;
   height: 0; /* Makes wrapper invisible for layout purposes */
-  z-index: 100; /* Same as header's original z-index */
+  z-index: 200; /* Same as header's original z-index */
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  background-color: transparent;
+  // background-color: transparent;
   padding: var(--space-m);
-  align-items: center;
+  // align-items: center;
 
   position: sticky;
   top: 0;
@@ -20,9 +20,7 @@ header {
   font-family: "Inter";
   font-weight: 800;
 
-  z-index: 100;
   transition: top 1s ease-in;
-  // border: solid 1px red;
 }
 
 section {

@@ -14,16 +14,26 @@
 //     <div class="t5">OR ANYWHERE IN THE WORLD</div>
 // `;
 
+// export const textAbout = () => {
+//   return (
+//     <>
+//       <div>
+//         INDEPENDENT <span className="backend">BACK-END</span>
+//       </div>
+//       <div>{`<%= DEVELOPER %>`}</div>
+//       <div>DEVELOPING API</div>
+//       <div>MANAGING DATA</div>
+//       <div>OPTIMISING & DEPLOYING...</div>
+//     </>
+//   );
+// };
+
 export const textAbout = () => {
   return (
     <>
-      <div>
-        INDEPENDENT <span className="backend">BACK-END</span>
-      </div>
-      <div>{`<%= DEVELOPER %>`}</div>
-      <div>DEVELOPING API</div>
-      <div>MANAGING DATA</div>
-      <div>OPTIMISING & DEPLOYING...</div>
+      <div>DAVID GIM</div>
+      <div>{"{style.web}"}</div>
+      <div>DESIGNER/DEVELOPER</div>
     </>
   );
 };
