@@ -50,7 +50,7 @@
     flex-direction: row;
     align-items: flex-end; /* Align the letters to the bottom */
     overflow: hidden;
-    // padding: var(--space-xxs);
+    padding: var(--space-xxs);
   }
   .letter {
     letter-spacing: var(--space-xxxxxs);
