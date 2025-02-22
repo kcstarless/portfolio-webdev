@@ -21,8 +21,7 @@
     z-index: 1;
   }
 
-  .about-text,
-  .about-text-mask {
+  .about-text {
     // border: solid 1px white;
     display: flex;
     flex-direction: column;
@@ -30,7 +29,7 @@
     align-items: center;
     // margin-top: -7vh;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     // font-family: "Bodoni Moda";
     // font-family: "Prata";
     font-family: "Marcellus";
@@ -51,29 +50,63 @@
     z-index: 100;
 
     .pre-mask {
+      background-image: url("/paper.jpg");
+      background-size: cover;
+      -webkit-background-clip: text; /* Clip the background to the text for webkit browsers */
+      background-clip: text;
+      color: transparent;
       text-align: center;
-      color: rgb(255, 255, 255);
-      text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
-        /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
-        /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
-    }
-  }
-  .about-text-mask {
-    position: absolute;
-    mask-image: url("/mask.svg");
-    background: orange;
-    mask-repeat: no-repeat;
-    mask-size: 40px;
-    color: white;
 
-    .mask {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      flex-direction: column;
-      cursor: none;
+      text-shadow: 0 -3px 6px rgb(255, 255, 255),
+        /* Shadow below */ -1px -3px 1px rgb(255, 255, 255),
+        /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
+
+      // Pressed out
+      // text-shadow: 0 6px 6px rgb(63, 63, 63),
+      //   /* Shadow below */ 1px 3px 1px rgb(59, 59, 59),
+      //   /* Shadow above */ 3px 4px 4px rgb(0, 0, 0); /* Light soft shadow */
+
+      // Pressed in
+      // text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
+      //   /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
+      //   /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
+
+      // animation: fadeIn 8s ease forwards;
+      // transition: color 5s ease, text-shadow 5s ease;
     }
+    // .pre-mask:hover {
+    //   color: white;
+    //   text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
+    //     /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
+    //     /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
+    // }
+    // @keyframes fadeIn {
+    //   0% {
+    //   }
+    //   100% {
+    //     color: white;
+    //     text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
+    //       /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
+    //       /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
+    //   }
+    // }
   }
+  // .about-text-mask {
+  //   position: absolute;
+  //   mask-image: url("/mask.svg");
+  //   background: orange;
+  //   mask-repeat: no-repeat;
+  //   mask-size: 40px;
+  //   color: white;
+
+  //   .mask {
+  //     display: flex;
+  //     text-align: center;
+  //     justify-content: center;
+  //     flex-direction: column;
+  //     cursor: none;
+  //   }
+  // }
 
   // .backend {
   //   color: orange;
@@ -89,6 +122,9 @@
   // height: 100vh;
   // border: solid 1px white;
   user-select: none;
+  background-image: url("/paper.jpg");
+  background-size: cover;
+  background-color: var(--color-light);
 
   .project-banner {
     white-space: nowrap;
