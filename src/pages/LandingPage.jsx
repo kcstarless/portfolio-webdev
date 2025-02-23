@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { textAbout, textAboutMask } from "../helpers/textHelper";
 import useMousePosition from "../hooks/useMousePosition";
 import { useRef, useEffect, useState } from "react";
@@ -54,8 +54,28 @@ const LandingPage = () => {
     setIsHovered(false); // Simulate mouse leave on touch end
   };
 
+  const { scrollYProgress } = useScroll();
+
+  const handleScroll = () => {
+    console.log("scrolling");
+  };
+
   return (
     <section id="about">
+      {/* <motion.div
+        id="scroll-indicator"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 10,
+          originX: 0,
+          zIndex: 200,
+          backgroundColor: "#ff0088",
+        }}
+      /> */}
       <div className="veil"></div>
       <LandingCanvas />
       <motion.div className="about-text" data-scroll data-scroll-speed="0.1">
@@ -70,6 +90,9 @@ const LandingPage = () => {
           onTouchStart={handleTouchStart} // Handle touch start for mobile
           onTouchMove={handleTouchMove} // Handle touch move for mobile
           onTouchEnd={handleTouchEnd} // Handle touch end for mobile
+          onScroll={() => {
+            handleScroll;
+          }}
         >
           {textAbout()}
         </div>

@@ -41,6 +41,7 @@ export const ProjectHeader = () => {
 
   return (
     <div className="project-banner" ref={slider}>
+      {/* <h1>HELLO HELLO</h1> */}
       <p ref={firstText}>
         &nbsp;PROJECTS / 프로젝트 / PROJEKT / プロジェクト / ПРОЕКТЫ / PROGETTI
         / 项目 /{" "}
