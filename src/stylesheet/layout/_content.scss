@@ -54,12 +54,12 @@
       // background-size: cover;
       // -webkit-background-clip: text; /* Clip the background to the text for webkit browsers */
       // background-clip: text;
-      color: transparent;
+      color: white;
       text-align: center;
 
-      text-shadow: 0 -3px 6px rgb(243, 243, 243),
-        /* Shadow below */ -1px -3px 1px rgb(255, 255, 255),
-        /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
+      // text-shadow: 0 -3px 6px rgb(243, 243, 243),
+      //   /* Shadow below */ -1px -3px 1px rgb(255, 255, 255),
+      //   /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
 
       // Pressed out
       // text-shadow: 0 6px 6px rgb(63, 63, 63),
@@ -67,9 +67,9 @@
       //   /* Shadow above */ 3px 4px 4px rgb(0, 0, 0); /* Light soft shadow */
 
       // Pressed in
-      // text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
-      //   /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
-      //   /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
+      text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
+        /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
+        /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
 
       // animation: fadeIn 8s ease forwards;
       // transition: color 5s ease, text-shadow 5s ease;
