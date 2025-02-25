@@ -27,37 +27,58 @@ uniform float u_time;
 uniform float u_colorSpeed;
 varying vec3 vNormal;
 varying vec3 vPosition;
+uniform float u_clickCounter;  // Click counter as a float
 
 void main() {
-    // Define five colors for the blob's regions
-    vec3 color1 = vec3(1.0, 0.0, 0.0);  // Red
-    vec3 color2 = vec3(1.0, 0.647, 0.0);  // Orange
-    vec3 color3 = vec3(0.0, 0.0, 0.0);  // Black
-    vec3 color4 = vec3(0.0, 0.0, 1.0);  // Blue
-    vec3 color5 = vec3(0.0, 0.6, 0.0);  // Green
+    // Define base colors: Green → Yellow → Orange → Red → Magenta → Blue
+    const vec3 colors[6] = vec3[6](
+        vec3(0.0, 0.6, 0.0),   // Green
+        vec3(0.7, 0.7, 0.0),   // Yellow
+        vec3(1.0, 0.647, 0.0), // Orange
+        vec3(1.0, 0.0, 0.0),   // Red
+        vec3(1.0, 0.0, 1.0),   // Magenta
+        vec3(0.0, 0.0, 1.0)    // Blue
+    );
 
-    // Define the boundaries for the 5 regions by dividing the sphere into different sections
-    // Using the x, y, and z positions to decide the color region.
-    float x = vPosition.x;
-    float y = vPosition.y;
-    float z = vPosition.z;
-    
-    vec3 finalColor;
+    // Define slightly brighter colors for the final click
+    const vec3 brightColors[6] = vec3[6](
+        vec3(0.2, 0.85, 0.2),   // Slightly brighter Green
+        vec3(0.85, 0.85, 0.2),  // Slightly brighter Yellow
+        vec3(1.0, 0.75, 0.3),   // Slightly brighter Orange
+        vec3(1.0, 0.2, 0.2),    // Slightly brighter Red
+        vec3(1.0, 0.2, 1.0),    // Slightly brighter Magenta
+        vec3(0.2, 0.2, 1.0)     // Slightly brighter Blue
+    );
 
-    // Check the position of each fragment in relation to the defined regions
-    if (x > 0.0 && y > 0.0 && z > 0.0) {
-        finalColor = color1;  // Top-right-front quadrant (red)
-    } else if (x < 0.0 && y > 0.0 && z > 0.0) {
-        finalColor = color2;  // Top-left-front quadrant (orange)
-    } else if (x < 0.0 && y < 0.0 && z > 0.0) {
-        finalColor = color3;  // Bottom-left-front quadrant (black)
-    } else if (x > 0.0 && y < 0.0 && z > 0.0) {
-        finalColor = color4;  // Bottom-right-front quadrant (blue)
-    } else {
-        finalColor = color5;  // Remaining region (green)
+    // Limit u_clickCounter to max 5
+    float maxClicks = 5.0;
+    float clickStage = clamp(floor(u_clickCounter), 0.0, maxClicks);
+
+    // If no clicks, entire surface is green
+    if (clickStage == 0.0) {
+        gl_FragColor = vec4(colors[0], 1.0);
+        return;
     }
 
-    // Apply the final color to the fragment
+    // Number of sections based on click count
+    float totalRegions = (clickStage < maxClicks) ? clickStage + 1.0 : 24.0;
+
+    // Get azimuth angle (phi) from x and z coordinates
+    float phi = atan(vPosition.z, vPosition.x) + 3.14159265; // Convert -PI to PI → 0 to 2*PI
+
+    // Calculate region width
+    float regionWidth = 6.2831853 / totalRegions; // 2*PI / totalRegions
+
+    // Determine region index
+    int regionIndex = int(floor(phi / regionWidth));
+    if (clickStage == maxClicks) {
+        regionIndex = regionIndex % 6; // Repeat 6 colors in 24 sections
+    }
+
+    // Use slightly brighter colors on final click
+    vec3 finalColor = (clickStage == maxClicks) ? brightColors[regionIndex] : colors[regionIndex];
+
     gl_FragColor = vec4(finalColor, 1.0);
 }
+
 `;
