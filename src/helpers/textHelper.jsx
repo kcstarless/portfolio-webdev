@@ -1,39 +1,18 @@
-// export const textAbout = `
-//     <div class="t1">INDEPENDENT FULL-STACK</div>
-//     <div class="t2"><%= DEVELOPER %></div>
-//     <div class="t3">CURRENTLY FIXIN </div>
-//     <div class="t4">BASED IN MELBOURNE</div>
-//     <div class="t5">OR ANYWHERE IN THE WORLD</div>
-// `;
+import { landingPageText } from "./textAnimationHelper";
 
-// export const textAboutMask = `
-//     <div class="t1">SELF THOUGHT FRONT-END</div>
-//     <div class="t2">{<Developer style={style.dev}</div>
-//     <div class="t3">CURRENTLY PLAYING w 3D</div>
-//     <div class="t4">BASED IN MELBOURNE</div>
-//     <div class="t5">OR ANYWHERE IN THE WORLD</div>
-// `;
-
-// export const textAbout = () => {
-//   return (
-//     <>
-//       <div>
-//         INDEPENDENT <span className="backend">BACK-END</span>
-//       </div>
-//       <div>{`<%= DEVELOPER %>`}</div>
-//       <div>DEVELOPING API</div>
-//       <div>MANAGING DATA</div>
-//       <div>OPTIMISING & DEPLOYING...</div>
-//     </>
-//   );
-// };
-
-export const textAbout = () => {
+export const textAbout = (isLocked) => {
   return (
     <>
       <div>DAVID GIM</div>
       <div>{"{style.web}"}</div>
-      <div>DESIGNER/DEVELOPER</div>
+      <div>DEVELOPER</div>
+      <div className="text-container">
+        <div className="text">
+          {landingPageText(
+            isLocked ? "CLICK ANYWHERE TO ADD COLOR & SOUND." : `SCROLL DOWN`
+          )}
+        </div>
+      </div>
     </>
   );
 };

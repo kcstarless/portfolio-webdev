@@ -10,19 +10,19 @@
 }
 
 html {
-  overflow: auto;
+  // overflow: auto;
   // scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-light);
-  // background-image: url("/paper.jpg");
+  // background-color: rgb(18, 18, 18);
+  background-image: url("/paper.jpg");
 
   font-family: var(--font-family-sans);
   color: var(--color-text-body);
   margin: 0; /* Ensure no extra space or scrollbar issues */
   padding: 0;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 img,

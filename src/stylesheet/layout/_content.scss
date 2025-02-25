@@ -3,7 +3,6 @@
   // margin-bottom: 7vh;
   // background-image: url("/noise.png");
   background-color: #ffffff;
-
   .veil {
     position: absolute;
     width: 100%;
@@ -31,8 +30,8 @@
     width: 100%;
     height: 100%;
     // font-family: "Bodoni Moda";
-    // font-family: "Prata";
-    font-family: "Marcellus";
+    font-family: "Prata";
+    // font-family: "Marcellus";
     // font-family: "Shippori Mincho";
     // font-family: "Literata";
     // font-family: "Poiret One";
@@ -54,6 +53,18 @@
       // background-size: cover;
       // -webkit-background-clip: text; /* Clip the background to the text for webkit browsers */
       // background-clip: text;
+
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      // background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      // background-clip: text;
+      // color: rgba(255, 255, 255, 0.212);
+
       color: transparent;
       text-align: center;
 
@@ -73,7 +84,50 @@
 
       // animation: fadeIn 8s ease forwards;
       // transition: color 5s ease, text-shadow 5s ease;
+      .text-container {
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+      .text {
+        position: absolute;
+        font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+        font-family: "Prata";
+
+        /* Set the text fill color to transparent */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        /* Stroke (outline) effect using a gradient */
+        -webkit-text-stroke: 1px transparent;
+        background-image: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* Optional: Adjust shadow for visibility */
+        text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+      }
+
+      // .locked.hidden {
+      //   opacity: 0;
+      //   transform: translateY(50px); /* Moves downward */
+      // }
+
+      // // .unlocked {
+      // //   position: absolute; /* Overlaps both texts */
+      // //   font-size: clamp(1rem, 2vw, 2rem);
+      // //   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+      // // }
+      // .unlocked.hidden {
+      //   opacity: 0;
+      //   transform: translateY(-50px);
+      // }
     }
+
+    // .pre-mask.show {
+    //   color: rgba(255, 255, 255, 0.212);
+    //   text-align: center;
+    // }
     // .pre-mask:hover {
     //   color: white;
     //   text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
@@ -127,7 +181,7 @@
   user-select: none;
   // background-image: url("/paper.jpg");
   background-size: auto;
-  background-color: var(--color-light);
+  // background-color: var(--color-light);
   padding-top: 50px;
 
   .project-banner {

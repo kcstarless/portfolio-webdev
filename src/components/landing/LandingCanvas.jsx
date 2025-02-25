@@ -1,27 +1,35 @@
-import React, { useRef, useMemo } from "react";
-import * as THREE from "three";
+import React, { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { vertexShader, fragmentShader } from "./shaders";
 import styles from "./style.module.scss";
 import { OrbitControls } from "@react-three/drei";
 
 // Fluid-like Blob Component
-const Blob = ({ position, size }) => {
+const Blob = ({ position, size, clickCounter }) => {
   const meshRef = useRef();
 
+  // Create uniforms once.
+  // We don't include clickCounter in the dependency array
+  // because we will update its value every frame.
   const uniforms = useMemo(
     () => ({
       u_time: { value: 0.0 },
       u_speed: { value: 0.5 },
       u_intensity: { value: 1 },
       u_colorSpeed: { value: 1 },
+      u_clickCounter: { value: clickCounter }, // initial value
     }),
     []
   );
 
+  // Update uniforms each frame.
   useFrame((state) => {
-    const { clock } = state;
-    meshRef.current.material.uniforms.u_time.value = clock.getElapsedTime();
+    if (meshRef.current) {
+      meshRef.current.material.uniforms.u_time.value =
+        state.clock.getElapsedTime();
+      // Update the click counter uniform with the latest value
+      meshRef.current.material.uniforms.u_clickCounter.value = clickCounter;
+    }
   });
 
   return (
@@ -37,35 +45,33 @@ const Blob = ({ position, size }) => {
 };
 
 // Scene Component with Camera Controls
-const Scene = () => {
+const Scene = ({ clickCounter }) => {
   const sceneRef = useRef();
 
   useFrame((state, delta) => {
-    sceneRef.current.rotation.y += delta * 0.2;
-    sceneRef.current.rotation.x += delta * 0.1;
-    sceneRef.current.rotation.z += delta * 0.1;
+    if (sceneRef.current) {
+      sceneRef.current.rotation.y += delta * 0.2;
+      sceneRef.current.rotation.x += delta * 0.1;
+      sceneRef.current.rotation.z += delta * 0.1;
+    }
   });
 
   return (
     <group ref={sceneRef}>
       <ambientLight intensity={0.2} />
-      <directionalLight
-        position={[0, 5, 5]} // Light coming from above and behind the camera
-        intensity={1.5}
-        castShadow
-      />
-      <Blob position={[0, 0, 0]} size={1.2} />
+      <directionalLight position={[0, 5, 5]} intensity={1.5} castShadow />
+      <Blob position={[0, 0, 0]} size={1.2} clickCounter={clickCounter} />
     </group>
   );
 };
 
 // Landing Canvas with Style
-export const LandingCanvas = () => {
+export const LandingCanvas = ({ clickCounter }) => {
   return (
     <div className={styles.container}>
       <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-        <Scene />
-        <OrbitControls /> {/* Keep or remove based on need */}
+        <Scene clickCounter={clickCounter} />
+        <OrbitControls />
       </Canvas>
     </div>
   );

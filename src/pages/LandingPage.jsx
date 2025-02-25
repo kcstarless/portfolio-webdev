@@ -1,102 +1,51 @@
-import { motion, useScroll } from "framer-motion";
-import { textAbout, textAboutMask } from "../helpers/textHelper";
-import useMousePosition from "../hooks/useMousePosition";
-import { useRef, useEffect, useState } from "react";
+import { useState, useRef } from "react";
+import { textAbout } from "../helpers/textHelper";
 import { LandingCanvas } from "../components/landing/LandingCanvas";
+import { sounds as audio } from "../helpers/audioHelper";
 
 const LandingPage = () => {
-  const { x, y } = useMousePosition();
-  const [isHovered, setIsHovered] = useState(false);
-  const maskRef = useRef(null); // Ref for the about-text-mask div
-  const [maskPosition, setMaskPosition] = useState({ x: 0, y: 0 });
-  const size = isHovered ? 240 : 40;
+  const sounds = audio;
+  const [clickCounter, setClickCounter] = useState(0);
+  const [isLocked, setIsLocked] = useState(true);
+  const audioIndex = useRef(0); // Tracks the correct sound index
+  const audioRef = useRef(new Audio(sounds[0])); // Initialize audio instance
 
-  // Handle mouse/touch movement
-  useEffect(() => {
-    if (maskRef.current) {
-      const maskRect = maskRef.current.getBoundingClientRect(); // Get the element's position
-      const offsetX = x - maskRect.left; // Calculate mouse position relative to the element
-      const offsetY = y - maskRect.top; // Calculate mouse position relative to the element
+  const handleClick = () => {
+    if (isLocked) {
+      if (!audioRef.current.paused) return; // Prevent spamming clicks
 
-      // Update mask position
-      setMaskPosition({
-        x: offsetX,
-        y: offsetY,
-      });
+      // **1. Update color immediately**
+      setClickCounter((prev) => prev + 1);
+
+      // **2. Play the correct sound in sequence**
+      const soundIndex = Math.min(audioIndex.current, sounds.length - 1);
+      audioRef.current.src = sounds[soundIndex];
+
+      try {
+        audioRef.current.currentTime = 0; // Reset sound to start
+        audioRef.current.play();
+
+        // **3. Ensure the next sound plays only after this one ends**
+        audioRef.current.onended = () => {
+          if (audioIndex.current < sounds.length - 1) {
+            audioIndex.current += 1; // Move to the next sound
+          } else {
+            setIsLocked(false); // Unlock after last sound
+          }
+        };
+      } catch (err) {
+        console.error("Error playing sound:", err);
+      }
     }
-  }, [x, y]);
-
-  // Handle touch events for mobile devices
-  const handleTouchStart = (event) => {
-    const touchX = event.touches[0].clientX;
-    const touchY = event.touches[0].clientY;
-    if (maskRef.current) {
-      const maskRect = maskRef.current.getBoundingClientRect(); // Get the element's position
-      const offsetX = touchX - maskRect.left; // Calculate touch position relative to the element
-      const offsetY = touchY - maskRect.top; // Calculate touch position relative to the element
-      setMaskPosition({ x: offsetX, y: offsetY });
-      setIsHovered(true); // Simulate hover on touch start
-    }
-  };
-
-  const handleTouchMove = (event) => {
-    const touchX = event.touches[0].clientX;
-    const touchY = event.touches[0].clientY;
-    if (maskRef.current) {
-      const maskRect = maskRef.current.getBoundingClientRect(); // Get the element's position
-      const offsetX = touchX - maskRect.left; // Calculate touch position relative to the element
-      const offsetY = touchY - maskRect.top; // Calculate touch position relative to the element
-      setMaskPosition({ x: offsetX, y: offsetY });
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsHovered(false); // Simulate mouse leave on touch end
-  };
-
-  const { scrollYProgress } = useScroll();
-
-  const handleScroll = () => {
-    console.log("scrolling");
   };
 
   return (
-    <section id="about">
-      {/* <motion.div
-        id="scroll-indicator"
-        style={{
-          scaleX: scrollYProgress,
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 10,
-          originX: 0,
-          zIndex: 200,
-          backgroundColor: "#ff0088",
-        }}
-      /> */}
+    <section id="about" onClick={handleClick}>
       <div className="veil"></div>
-      <LandingCanvas />
-      <motion.div className="about-text" data-scroll data-scroll-speed="0.1">
-        <div
-          className="pre-mask"
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          onTouchStart={handleTouchStart} // Handle touch start for mobile
-          onTouchMove={handleTouchMove} // Handle touch move for mobile
-          onTouchEnd={handleTouchEnd} // Handle touch end for mobile
-          onScroll={() => {
-            handleScroll;
-          }}
-        >
-          {textAbout()}
-        </div>
-      </motion.div>
+      <LandingCanvas clickCounter={clickCounter} />
+      <div className="about-text">
+        <div className="pre-mask">{textAbout(isLocked)}</div>
+      </div>
     </section>
   );
 };
