@@ -12,11 +12,12 @@
 html {
   // overflow: auto;
   // scroll-behavior: smooth;
+  // scroll-snap-type: y proximity;
 }
 
 body {
   // background-color: rgb(18, 18, 18);
-  background-image: url("/paper.jpg");
+  // background-image: url("/paper.jpg");
 
   font-family: var(--font-family-sans);
   color: var(--color-text-body);

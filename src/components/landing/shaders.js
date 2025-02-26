@@ -60,8 +60,8 @@ void main() {
         return;
     }
 
-    // Number of sections based on click count
-    float totalRegions = (clickStage < maxClicks) ? clickStage + 1.0 : 24.0;
+    // Number of sections based on click count (changed from 24 to 12)
+    float totalRegions = (clickStage < maxClicks) ? clickStage + 1.0 : 12.0;
 
     // Get azimuth angle (phi) from x and z coordinates
     float phi = atan(vPosition.z, vPosition.x) + 3.14159265; // Convert -PI to PI → 0 to 2*PI
@@ -72,7 +72,7 @@ void main() {
     // Determine region index
     int regionIndex = int(floor(phi / regionWidth));
     if (clickStage == maxClicks) {
-        regionIndex = regionIndex % 6; // Repeat 6 colors in 24 sections
+        regionIndex = regionIndex % 6; // Repeat 6 colors in 12 sections
     }
 
     // Use slightly brighter colors on final click

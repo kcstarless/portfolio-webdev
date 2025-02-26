@@ -1,14 +1,35 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { textAbout } from "../helpers/textHelper";
 import { LandingCanvas } from "../components/landing/LandingCanvas";
 import { sounds as audio } from "../helpers/audioHelper";
+import ProgressCounter from "../components/landing/ProgressCounter";
+import styles from "../components/landing/style.module.scss";
 
 const LandingPage = () => {
   const sounds = audio;
   const [clickCounter, setClickCounter] = useState(0);
-  const [isLocked, setIsLocked] = useState(true);
+  const [isLocked, setIsLocked] = useState(true); // Use state for scroll lock
   const audioIndex = useRef(0); // Tracks the correct sound index
   const audioRef = useRef(new Audio(sounds[0])); // Initialize audio instance
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if (isLocked) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    // Add event listeners with capture phase
+    const options = { passive: false, capture: true };
+    window.addEventListener("wheel", handleScroll, options);
+    window.addEventListener("touchmove", handleScroll, options);
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll, options);
+      window.removeEventListener("touchmove", handleScroll, options);
+    };
+  }, [isLocked, clickCounter]);
 
   const handleClick = () => {
     if (isLocked) {
@@ -30,7 +51,7 @@ const LandingPage = () => {
           if (audioIndex.current < sounds.length - 1) {
             audioIndex.current += 1; // Move to the next sound
           } else {
-            setIsLocked(false); // Unlock after last sound
+            setIsLocked(false); // Unlock after the last sound
           }
         };
       } catch (err) {
@@ -45,6 +66,13 @@ const LandingPage = () => {
       <LandingCanvas clickCounter={clickCounter} />
       <div className="about-text">
         <div className="pre-mask">{textAbout(isLocked)}</div>
+      </div>
+      <div
+        className={`${styles.progressCounterWrapper} ${
+          clickCounter <= 4 ? "" : styles.hidden
+        }`}
+      >
+        <ProgressCounter clickCounter={clickCounter} />
       </div>
     </section>
   );

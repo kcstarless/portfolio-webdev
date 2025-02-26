@@ -21,6 +21,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scroll-snap": "^1.0.0",
+    "react-use-scroll-snap": "^1.0.0",
     "sass": "^1.84.0",
     "three": "^0.173.0",
     "three-mesh-bvh": "^0.9.0"

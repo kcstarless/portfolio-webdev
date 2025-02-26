@@ -2,3 +2,81 @@
   height: 100vh;
   width: 100vw;
 }
+
+.progressCounterWrapper {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Allow clicks to pass through the container */
+  z-index: 100;
+
+  &.hidden {
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+  }
+}
+.progressCounter {
+  opacity: 1;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  pointer-events: none; // Allow clicks to pass through
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+
+  .counter {
+    position: absolute;
+
+    font-size: 30px;
+    font-weight: bold;
+    // transform: translate(-50%, -50%);
+
+    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .textRing {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: rotate 5s linear infinite;
+  }
+
+  svg {
+    fill: rgb(108, 122, 106);
+  }
+  .hidden {
+    opacity: 0 !important;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinText {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
