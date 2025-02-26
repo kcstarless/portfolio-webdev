@@ -15,7 +15,7 @@ const LandingPage = () => {
   useEffect(() => {
     const handleScroll = (e) => {
       if (isLocked) {
-        e.preventDefault();
+        // e.preventDefault();
         e.stopPropagation();
       }
     };

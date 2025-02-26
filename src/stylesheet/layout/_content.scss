@@ -1,8 +1,7 @@
 #about {
-  // margin-top: -7vh;
-  // margin-bottom: 7vh;
-  // background-image: url("/noise.png");
   background-color: #ffffff;
+  position: sticky;
+  top: 0;
   .veil {
     position: absolute;
     width: 100%;
@@ -107,89 +106,31 @@
         /* Optional: Adjust shadow for visibility */
         text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
       }
-
-      // .locked.hidden {
-      //   opacity: 0;
-      //   transform: translateY(50px); /* Moves downward */
-      // }
-
-      // // .unlocked {
-      // //   position: absolute; /* Overlaps both texts */
-      // //   font-size: clamp(1rem, 2vw, 2rem);
-      // //   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-      // // }
-      // .unlocked.hidden {
-      //   opacity: 0;
-      //   transform: translateY(-50px);
-      // }
     }
-
-    // .pre-mask.show {
-    //   color: rgba(255, 255, 255, 0.212);
-    //   text-align: center;
-    // }
-    // .pre-mask:hover {
-    //   color: white;
-    //   text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
-    //     /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
-    //     /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
-    // }
-    // @keyframes fadeIn {
-    //   0% {
-    //   }
-    //   100% {
-    //     color: white;
-    //     text-shadow: 0 -3px 6px rgba(0, 0, 0, 0.589),
-    //       /* Shadow below */ -1px -3px 1px rgba(0, 0, 0, 0.603),
-    //       /* Shadow above */ -1px 2px 4px rgba(0, 0, 0, 0.582); /* Light soft shadow */
-    //   }
-    // }
   }
-  // .about-text-mask {
-  //   position: absolute;
-  //   mask-image: url("/mask.svg");
-  //   background: orange;
-  //   mask-repeat: no-repeat;
-  //   mask-size: 40px;
-  //   color: white;
-
-  //   .mask {
-  //     display: flex;
-  //     text-align: center;
-  //     justify-content: center;
-  //     flex-direction: column;
-  //     cursor: none;
-  //   }
-  // }
-
-  // .backend {
-  //   color: orange;
-  // }
-  // .frontend {
-  //   color: #1cc02d;
-  // }
 }
 
 #project {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  // gap: 100px;
   // justify-content: start;
   // width: 100%;
   // height: 100vh;
   // border: solid 1px white;
   user-select: none;
   // background-image: url("/paper.jpg");
-  background-size: auto;
-  // background-color: var(--color-light);
+  // background-size: auto;
+  background-color: var(--color-light);
   padding-top: 50px;
-
+  position: sticky;
+  top: 0;
   .project-banner {
     white-space: nowrap;
     display: flex;
     align-items: center;
     overflow: hidden;
-    color: rgb(66, 66, 66);
+    color: rgb(255, 64, 64);
 
     width: 100%;
     font-family: "Righteous";
@@ -233,7 +174,7 @@
 
           p {
             display: inline-block;
-            color: #b7ab98;
+            color: #ff4040;
             text-transform: uppercase;
             font-weight: 700;
             font-size: clamp(3rem, 6vw, 6rem);
@@ -243,7 +184,7 @@
             &:nth-of-type(2) {
               display: block;
               position: absolute;
-              color: #1c1c1c;
+              color: #6e6e6e;
               top: 0;
               z-index: 1;
             }
