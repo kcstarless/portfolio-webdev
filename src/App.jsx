@@ -17,22 +17,26 @@ function App() {
       resetWindowScrollPosition();
     };
 
-    // Simulate waiting for everything to load (you can replace this with real resource loading logic)
-    const handleWindowLoad = () => {
-      setIsLoading(false); // Set to false when everything is loaded
+    const checkIfLoaded = () => {
+      if (document.readyState === "complete") {
+        setIsLoading(false);
+      }
     };
 
-    // Add event listener for when the window has finished loading
-    window.addEventListener("load", handleWindowLoad);
+    // Check document.readyState and set event listener for 'load' event
+    if (document.readyState === "complete") {
+      setIsLoading(false);
+    } else {
+      window.addEventListener("load", checkIfLoaded);
+    }
 
-    // Cleanup event listener
     return () => {
-      window.removeEventListener("load", handleWindowLoad);
+      window.removeEventListener("load", checkIfLoaded);
     };
   }, [resetWindowScrollPosition]);
 
   if (isLoading) {
-    return <div className="loading-screen"></div>; // Or you can show a spinner/loading indicator
+    return <div>Loading...</div>; // Replace with a spinner or other loading indicator
   }
 
   return (
