@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { textAbout } from "../helpers/textHelper";
+import { textLanding } from "../helpers/textHelper";
 import { LandingCanvas } from "../components/landing/LandingCanvas";
 import { sounds as audio } from "../helpers/audioHelper";
 import ProgressCounter from "../components/landing/ProgressCounter";
@@ -61,11 +61,11 @@ const LandingPage = () => {
   };
 
   return (
-    <section id="about" onClick={handleClick}>
+    <section id="landing" onClick={handleClick}>
       <div className="veil"></div>
       <LandingCanvas clickCounter={clickCounter} />
-      <div className="about-text">
-        <div className="pre-mask">{textAbout(isLocked)}</div>
+      <div className="landing-text">
+        <div className="pre-mask">{textLanding(isLocked)}</div>
       </div>
       <div
         className={`${styles.progressCounterWrapper} ${

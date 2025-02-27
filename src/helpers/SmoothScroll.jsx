@@ -7,12 +7,20 @@ export default function SmoothScroll({ children }) {
   useEffect(() => {
     // Initialize Lenis on mount
     const lenis = new Lenis({
-      duration: 1.2, // Smooth scroll duration, adjust as needed
+      duration: 1.8, // Smooth scroll duration, adjust as needed
       easing: (t) => t * (2 - t), // Easing function (default is ease-in-out)
       direction: "vertical", // Direction of scrolling
       smoothWheel: true, // Enable smooth scroll with mouse wheel
       smoothTouch: true, // Enable smooth scroll with touch events (for mobile)
       infinite: false, // Infinite scroll is disabled by default
+      // lerp: 0.1,
+    });
+
+    lenis.on("scroll", ({ scroll }) => {
+      if (scroll % window.innerHeight < 5) {
+        lenis.stop(); // Stop to allow snap
+        setTimeout(() => lenis.start(), 1); // Restart after small delay
+      }
     });
 
     // Request animation frame for smooth scroll

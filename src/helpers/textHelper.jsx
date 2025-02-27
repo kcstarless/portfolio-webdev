@@ -1,11 +1,11 @@
-import { landingPageText } from "./textAnimationHelper";
+import { landingPageText, logoTextAnimation } from "./textAnimationHelper";
 
-export const textAbout = (isLocked) => {
+export const textLanding = (isLocked) => {
   return (
     <>
-      <div>DAVID GIM</div>
-      <div>{"{style.web}"}</div>
-      <div>DEVELOPER</div>
+      <div>{landingPageText("DAVID GIM")}</div>
+      <div className="style-web">{landingPageText("{ style.web }")}</div>
+      <div>{logoTextAnimation("DEVELOPER")}</div>
       <div className="text-container">
         <div className="text">
           {landingPageText(

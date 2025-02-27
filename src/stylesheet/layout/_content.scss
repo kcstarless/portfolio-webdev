@@ -1,7 +1,8 @@
-#about {
+#landing {
   background-color: #ffffff;
   position: sticky;
   top: 0;
+
   .veil {
     position: absolute;
     width: 100%;
@@ -15,11 +16,11 @@
       0.2
     ); /* Adds semi-transparent white background */
 
-    opacity: 0.99; /* Adjust opacity for noise effect */
+    opacity: 0.999; /* Adjust opacity for noise effect */
     z-index: 1;
   }
 
-  .about-text {
+  .landing-text {
     // border: solid 1px white;
     display: flex;
     flex-direction: column;
@@ -83,6 +84,27 @@
 
       // animation: fadeIn 8s ease forwards;
       // transition: color 5s ease, text-shadow 5s ease;
+      .style-web {
+        font-size: clamp(1rem, 4vw, 4rem);
+        font-family: "Marcellus";
+        padding-bottom: 15px;
+
+        font-family: "Prata";
+
+        /* Set the text fill color to transparent */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        /* Stroke (outline) effect using a gradient */
+        -webkit-text-stroke: 1px transparent;
+        background-image: linear-gradient(45deg, #0f2027, #203a43, #1c3742);
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* Optional: Adjust shadow for visibility */
+        text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+      }
+
       .text-container {
         display: flex;
         justify-content: center;
@@ -110,6 +132,12 @@
   }
 }
 
+#about {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
 #project {
   display: flex;
   flex-direction: column;
@@ -125,6 +153,7 @@
   padding-top: 50px;
   position: sticky;
   top: 0;
+
   .project-banner {
     white-space: nowrap;
     display: flex;

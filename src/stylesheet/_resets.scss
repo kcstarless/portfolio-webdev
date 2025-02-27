@@ -12,7 +12,8 @@
 html {
   // overflow: auto;
   // scroll-behavior: smooth;
-  // scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
+  // overflow-y: scroll;
 }
 
 body {
