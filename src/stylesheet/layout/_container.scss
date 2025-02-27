@@ -30,8 +30,12 @@ section {
   align-items: center;
   height: 100vh;
   // scroll-snap-align: start;
+  // overflow: hidden;
 }
 
+::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
 // Sticky footer
 footer {
   height: 15vh;

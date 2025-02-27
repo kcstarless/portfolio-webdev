@@ -7,7 +7,7 @@ export default function SmoothScroll({ children }) {
   useEffect(() => {
     // Initialize Lenis on mount
     const lenis = new Lenis({
-      duration: 1.8, // Smooth scroll duration, adjust as needed
+      duration: 1.2, // Smooth scroll duration, adjust as needed
       easing: (t) => t * (2 - t), // Easing function (default is ease-in-out)
       direction: "vertical", // Direction of scrolling
       smoothWheel: true, // Enable smooth scroll with mouse wheel

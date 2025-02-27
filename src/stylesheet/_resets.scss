@@ -24,7 +24,9 @@ body {
   color: var(--color-text-body);
   margin: 0; /* Ensure no extra space or scrollbar issues */
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
+  // overflow-y: hidden;
+  // overflow-x: hidden;
 }
 
 img,

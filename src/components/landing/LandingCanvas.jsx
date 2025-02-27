@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useState } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { vertexShader, fragmentShader } from "./shaders";
 import styles from "./style.module.scss";
@@ -47,10 +47,24 @@ const Blob = ({ position, size, clickCounter }) => {
 // Scene Component with Camera Controls
 const Scene = ({ clickCounter }) => {
   const sceneRef = useRef();
+  const [blobSize, setBlobSize] = useState(() => getBlobSize());
+
+  function getBlobSize() {
+    if (window.innerWidth < 431) return 0.3; // Small screens
+    if (window.innerWidth < 1024) return 0.6; // Tablets
+    return 0.9; // Desktops
+  }
+  useEffect(() => {
+    const handleResize = () => {
+      setBlobSize(getBlobSize());
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useFrame((state, delta) => {
     if (sceneRef.current) {
-      sceneRef.current.rotation.y += delta * 0.2;
+      sceneRef.current.rotation.y += delta * 0.5;
       sceneRef.current.rotation.x += delta * 0.1;
       sceneRef.current.rotation.z += delta * 0.1;
     }
@@ -60,7 +74,7 @@ const Scene = ({ clickCounter }) => {
     <group ref={sceneRef}>
       <ambientLight intensity={0.2} />
       <directionalLight position={[0, 5, 5]} intensity={1.5} castShadow />
-      <Blob position={[0, 0, 0]} size={1.2} clickCounter={clickCounter} />
+      <Blob position={[0, 0, 0]} size={blobSize} clickCounter={clickCounter} />
     </group>
   );
 };
