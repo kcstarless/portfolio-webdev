@@ -6,10 +6,12 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 
+import styles from "./style.module.scss";
+
 export const ProjectTitles = ({ list, setSelectedProject }) => {
   return (
     <>
-      <div className="titles">
+      <div className={styles.titles}>
         {list.map((project, index) => {
           {
             return (
@@ -44,9 +46,9 @@ function Title({ data, setSelectedProject }) {
     window.open(link, "_blank");
   }
   return (
-    <div ref={container} className="title">
+    <div ref={container} className={styles.title}>
       <div
-        className="wrapper"
+        className={styles.wrapper}
         onMouseOver={() => {
           setSelectedProject(index);
         }}

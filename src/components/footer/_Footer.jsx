@@ -1,7 +1,8 @@
 import { motion } from "framer-motion"; // Import motion from framer-motion for animation
 import { useRef, useState } from "react"; // Import useRef for element reference and useState for managing state
+import styles from "./style.module.scss";
 
-export const FooterPage = () => {
+const Footer = () => {
   // Create a reference to track the position of each element
   const ref = useRef();
 
@@ -31,9 +32,9 @@ export const FooterPage = () => {
 
   return (
     <footer>
-      <div className="footer-container">
-        <div className="footer-content">
-          <div className="footer-items">
+      <div className={styles.footer_container}>
+        <div className={styles.footer_content}>
+          <div className={styles.footer_items}>
             {/* The motion.p element is used for animated paragraphs */}
             <motion.p
               ref={ref} // Attach the ref to the element
@@ -83,3 +84,5 @@ export const FooterPage = () => {
     </footer>
   );
 };
+
+export default Footer;

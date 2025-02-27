@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import styles from "./style.module.scss";
 
 export const ProjectHeader = () => {
   const firstText = useRef(null);
@@ -40,7 +41,7 @@ export const ProjectHeader = () => {
   };
 
   return (
-    <div className="project-banner" ref={slider}>
+    <div className={styles.project_banner} ref={slider}>
       {/* <h1>HELLO HELLO</h1> */}
       <p ref={firstText}>
         &nbsp;PROJECTS / 프로젝트 / PROJEKT / プロジェクト / ПРОЕКТЫ / PROGETTI

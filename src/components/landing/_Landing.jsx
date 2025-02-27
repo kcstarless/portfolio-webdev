@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { textLanding } from "../helpers/textHelper";
-import { LandingCanvas } from "../components/landing/LandingCanvas";
-import { sounds as audio } from "../helpers/audioHelper";
-import ProgressCounter from "../components/landing/ProgressCounter";
-import styles from "../components/landing/style.module.scss";
+import { textLanding } from "../../helpers/textHelper";
+import { LandingCanvas } from "./LandingCanvas";
+import { sounds as audio } from "../../helpers/audioHelper";
+import ProgressCounter from "./ProgressCounter";
+import styles from "./style.module.scss";
 
-const LandingPage = () => {
+const Landing = () => {
   const sounds = audio;
   const [clickCounter, setClickCounter] = useState(0);
   const [isLocked, setIsLocked] = useState(true); // Use state for scroll lock
@@ -61,11 +61,11 @@ const LandingPage = () => {
   };
 
   return (
-    <section id="landing" onClick={handleClick}>
-      <div className="veil"></div>
+    <section id={styles.landing} onClick={handleClick}>
+      <div className={styles.veil}></div>
       <LandingCanvas clickCounter={clickCounter} />
-      <div className="landing-text">
-        <div className="pre-mask">{textLanding(isLocked)}</div>
+      <div className={styles.landing_text}>
+        <div className={styles.pre_mask}>{textLanding(isLocked, styles)}</div>
       </div>
       <div
         className={`${styles.progressCounterWrapper} ${
@@ -78,4 +78,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Landing;

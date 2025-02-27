@@ -1,0 +1,19 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  // scroll-snap-align: start;
+  // overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.loading-screen {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,6 +1,6 @@
 import SmoothScroll from "./helpers/SmoothScroll";
 import Content from "./pages/Content";
-import HeaderBar from "./pages/HeaderBar";
+import Header from "./components/header/_Header";
 import { useEffect, useCallback, useState } from "react";
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <SmoothScroll>
-        <HeaderBar />
+        <Header />
         <Content />
       </SmoothScroll>
     </>

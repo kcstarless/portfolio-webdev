@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProjectTitles } from "./ProjectTitles";
 import { ProjectDesc } from "./ProjectDesc";
-
+import styles from "./style.module.scss";
 const list = [
   {
     title: "GimDev",
@@ -37,7 +37,7 @@ export const ProjectList = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   return (
     <>
-      <div className="project-list">
+      <div className={styles.project_list}>
         <ProjectTitles list={list} setSelectedProject={setSelectedProject} />
         <ProjectDesc list={list} selectedProject={selectedProject} />
       </div>

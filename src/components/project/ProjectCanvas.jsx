@@ -2,7 +2,7 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState, useEffect } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-
+import styles from "./style.module.scss";
 import colorTexture from "../../assets/images/color.webp";
 import normalTexture from "../../assets/images/normal.webp";
 import aoMapTexture from "../../assets/images/occlusion.webp";
@@ -94,7 +94,7 @@ const ProjectCanvas = () => {
   };
 
   return (
-    <Canvas className="project-canvas">
+    <Canvas className={styles.project_canvas}>
       <ambientLight intensity={1} />
       <directionalLight intensity={20} position={[5, 0, -0.25]} />
       <EarthSphere />

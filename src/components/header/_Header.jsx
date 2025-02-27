@@ -3,12 +3,13 @@ import { useScroll, motion } from "framer-motion";
 import {
   logoTextAnimation,
   menuTextAnimation,
-} from "../helpers/textAnimationHelper";
+} from "../../helpers/textAnimationHelper";
+import styles from "./style.module.scss";
 
 const logoExtended = "";
 const logoShortened = "D";
 
-const HeaderBar = () => {
+const Header = () => {
   const [logo, setLogo] = useState(logoExtended); // Track logo state
   const [isExpanded, setIsExpanded] = useState(true); // Track if the logo is expanded
 
@@ -34,19 +35,21 @@ const HeaderBar = () => {
   }, [scrollYProgress, isExpanded]);
 
   return (
-    <div className="sticky-wrapper">
+    <div className={styles.sticky_wrapper}>
       <motion.header>
-        <div className="logo-container">
+        <div className={styles.logo_container}>
           <div
-            className={`logo-text ${isExpanded ? "expanded" : "small"}`}
+            className={`${styles.logo_text} ${
+              isExpanded ? styles.expanded : styles.small
+            }`}
             key={logo}
           >
             {logoTextAnimation(logo)} {/* Render animated logo text */}
           </div>
         </div>
 
-        <div className="menu-container">
-          <div className="menu-item">
+        <div className={styles.menu_container}>
+          <div className={styles.menu_item}>
             <a
               href="https://gimdev-lingering-sun-6640.fly.dev/"
               data-text="BLOG"
@@ -55,7 +58,7 @@ const HeaderBar = () => {
               <span>{menuTextAnimation("BLOG")}</span>
             </a>
           </div>
-          <div className="menu-item">
+          <div className={styles.menu_item}>
             <a href="mailto:example@example.com" data-text="CONTACT">
               <span>{menuTextAnimation("CONTACT")}</span>
             </a>
@@ -66,4 +69,4 @@ const HeaderBar = () => {
   );
 };
 
-export default HeaderBar;
+export default Header;

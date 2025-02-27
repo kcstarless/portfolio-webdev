@@ -1,15 +1,15 @@
-import { FooterPage } from "./FooterPage";
-import LandingPage from "./LandingPage";
-import ProjectPage from "./ProjectPage";
-import { AboutPage } from "./AboutPage";
+import Footer from "../components/footer/_Footer";
+import Landing from "../components/landing/_Landing";
+import Project from "../components/project/_Project";
+import About from "../components/about/_About";
 
 const Content = () => {
   return (
     <>
-      <LandingPage />
-      {/* <AboutPage /> */}
-      <ProjectPage />
-      <FooterPage />
+      <Landing />
+      {/* <About /> */}
+      <Project />
+      <Footer />
     </>
   );
 };

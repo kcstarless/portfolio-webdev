@@ -1,3 +1,141 @@
+#landing {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+
+  .veil {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url("/noise.png");
+    backdrop-filter: blur(200px); /* Creates a blur effect behind the veil */
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.2
+    ); /* Adds semi-transparent white background */
+
+    opacity: 0.999; /* Adjust opacity for noise effect */
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .veil {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-image: url("/noise.png");
+      backdrop-filter: blur(100px); /* Creates a blur effect behind the veil */
+      background-color: rgba(
+        214,
+        214,
+        214,
+        0.671
+      ); /* Adds semi-transparent white background */
+
+      opacity: 0.999; /* Adjust opacity for noise effect */
+      z-index: 1;
+    }
+  }
+
+  .landing_text {
+    // border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // margin-top: -7vh;
+    width: 100%;
+    height: 100%;
+    // font-family: "Bodoni Moda";
+    font-family: "Prata";
+    // font-family: "Marcellus";
+    // font-family: "Shippori Mincho";
+    // font-family: "Literata";
+    // font-family: "Poiret One";
+    // font-family: "Mystery Quest";
+    // font-family: "Molle";
+    // font-family: "Mrs Sheppards";
+    font-size: clamp(1.3rem, 7vw, 7rem);
+    font-weight: bold;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    user-select: none;
+    z-index: 100;
+
+    .pre_mask {
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+
+      text-shadow: 0 -3px 6px rgb(243, 243, 243),
+        /* Shadow below */ -1px -3px 1px rgb(255, 255, 255),
+        /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
+
+      .style_web {
+        font-size: clamp(1.5rem, 4vw, 4rem);
+        font-family: "Marcellus";
+        padding-bottom: 15px;
+      }
+
+      .click_text {
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .text {
+        position: absolute;
+        font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+        font-family: "Prata";
+
+        /* Set the text fill color to transparent */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        /* Stroke (outline) effect using a gradient */
+        -webkit-text-stroke: 1px transparent;
+        background-image: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* Optional: Adjust shadow for visibility */
+        text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pre-mask {
+        font-family: "Prata"; /* Same font as .text */
+
+        /* Fix for gradient text */
+        display: inline-block; /* Ensures background-clip applies */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* Apply text shadow */
+        text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+        .style-web {
+          padding-bottom: 5px;
+        }
+        .text {
+          font-weight: lighter;
+        }
+      }
+    }
+  }
+}
+
 .container {
   height: 100vh;
   width: 100vw;
