@@ -9,17 +9,18 @@
   user-select: none;
   // background-image: url("/paper.jpg");
   // background-size: auto;
-  background-color: var(--color-light);
-  padding-top: 50px;
+  background-color: rgb(31, 29, 29);
+  padding-top: 35px;
   position: sticky;
   top: 0;
 
   .project_banner {
-    white-space: nowrap;
+    // white-space: nowrap;
     display: flex;
+    justify-content: center;
     align-items: center;
     overflow: hidden;
-    color: rgb(255, 64, 64);
+    color: rgb(255, 179, 64);
 
     width: 100%;
     font-family: "Alumni Sans Pinstripe";
@@ -28,7 +29,7 @@
 
     p {
       margin: 0px;
-      font-size: clamp(5rem, 8vw, 8rem);
+      font-size: clamp(3rem, 5vw, 5rem);
     }
 
     p:nth-oftype(2) {
@@ -46,7 +47,7 @@
     position: absolute;
     z-index: 1;
     width: 100%;
-
+    font-family: "Alumni Sans Pinstripe";
     .titles {
       width: 100%;
       border-top: 1px solid rgba(183, 171, 152, 0.25);
@@ -59,18 +60,20 @@
 
         .wrapper {
           display: inline-block;
-          padding-left: 10%;
+          padding-left: 20%;
 
           p {
+            width: 100%;
             display: inline-block;
-            color: #ff4040;
-            text-transform: uppercase;
+            color: rgb(255, 179, 64);
+
             font-weight: 700;
             font-size: clamp(3rem, 6vw, 6rem);
-            // line-height: 6rem;
+
             position: relative;
             z-index: 2;
             &:nth-of-type(2) {
+              width: 100%;
               display: block;
               position: absolute;
               color: #6e6e6e;
@@ -91,11 +94,11 @@
       pointer-events: none;
 
       .description {
-        background-color: rgba(255, 0, 0, 0.747);
+        background-color: rgb(255, 179, 64);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-left: 10%;
+        padding-left: 20%;
         padding-right: 10%;
         padding-bottom: 1px;
         clip-path: inset(50% 0 50%);
@@ -113,9 +116,9 @@
           }
           &:nth-of-type(2) {
             width: 40%;
-            font-size: 0.8vw;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             // font-weight: 700;
-            color: var(--color-light);
+            color: white;
             font-family: "Poppins";
           }
         }

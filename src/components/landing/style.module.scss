@@ -79,35 +79,47 @@
         /* Shadow below */ -1px -3px 1px rgb(255, 255, 255),
         /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
 
-      .style_web {
+      .line1 {
+      }
+      .line2 {
         font-size: clamp(1.5rem, 4vw, 4rem);
         font-family: "Marcellus";
         padding-bottom: 15px;
       }
-
-      .click_text {
+      .line3 {
+      }
+      .line4 {
         display: flex;
         justify-content: center;
         position: relative;
-      }
 
-      .text {
-        position: absolute;
-        font-size: clamp(0.8rem, 1.5vw, 1.5rem);
-        font-family: "Prata";
+        .line4_text {
+          position: absolute;
+          font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+          font-family: "Prata";
 
-        /* Set the text fill color to transparent */
-        color: transparent;
-        -webkit-text-fill-color: transparent;
+          /* Set the text fill color to transparent */
+          color: transparent;
+          -webkit-text-fill-color: transparent;
 
-        /* Stroke (outline) effect using a gradient */
-        -webkit-text-stroke: 1px transparent;
-        background-image: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
-        background-clip: text;
-        -webkit-background-clip: text;
+          /* Stroke (outline) effect using a gradient */
+          -webkit-text-stroke: 1px transparent;
+          background-image: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+          background-clip: text;
+          -webkit-background-clip: text;
 
-        /* Optional: Adjust shadow for visibility */
-        text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+          /* Optional: Adjust shadow for visibility */
+          text-shadow: 2px 2px 5px rgba(252, 252, 252, 0.3);
+
+          animation: fade-out 2s linear forwards;
+          animation-timeline: scroll();
+          animation-range-end: 200px;
+        }
+        @keyframes fade-out {
+          to {
+            opacity: 0;
+          }
+        }
       }
     }
 

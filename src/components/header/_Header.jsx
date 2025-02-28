@@ -44,7 +44,8 @@ const Header = () => {
             }`}
             key={logo}
           >
-            {logoTextAnimation(logo)} {/* Render animated logo text */}
+            <a href="/">{logoTextAnimation(logo)} </a>
+            {/* Render animated logo text */}
           </div>
         </div>
 
@@ -54,12 +55,17 @@ const Header = () => {
               href="https://gimdev-lingering-sun-6640.fly.dev/"
               data-text="BLOG"
               target="_blank"
+              className="menu_link"
             >
               <span>{menuTextAnimation("BLOG")}</span>
             </a>
           </div>
           <div className={styles.menu_item}>
-            <a href="mailto:example@example.com" data-text="CONTACT">
+            <a
+              href="mailto:example@example.com"
+              data-text="CONTACT"
+              className="menu_link"
+            >
               <span>{menuTextAnimation("CONTACT")}</span>
             </a>
           </div>

@@ -1,5 +1,194 @@
 #about {
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: #fff;
+  font-family: "Alumni Sans Pinstripe";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+
+  // height: auto;
+}
+
+.project_header {
+  font-size: clamp(4vw, 6vw, 6vw);
+  text-align: center;
+  // color: rgb(255, 2, 2);
+  font-weight: bold;
+}
+
+.project_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  // border: solid 1px black;
+  gap: 2vw;
+
+  .project_card {
+    position: relative;
+    aspect-ratio: 35 / 30;
+    width: clamp(15vw, 40vw, 40vw);
+    max-width: 45rem;
+
+    aspect-ratio: 16 / 9;
+    overflow: hidden; // Ensures the overlay doesn’t spill out
+    // filter: grayscale(100%);
+    // animation: fade-in-50 linear forwards;
+    // animation-timeline: view();
+    // animation-range-start: 300px;
+    // animation-range-end: 300px;
+
+    .project_image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      scale: 1.5;
+      filter: grayscale(0%); // Apply filter on the image directly
+      // filter: brightness(0.95);
+      transition: filter 0.5s ease-out;
+    }
+    &:hover .project_image {
+      filter: grayscale(0%);
+      filter: brightness(1);
+    }
+    // Create the curtain overlay using a pseudo-element
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%; // starts with no overlay
+      background: white; // change to desired color or transparency
+      transition: height 0.5s ease-out; // smooth animation
+      z-index: 2;
+    }
+
+    // On hover, increase the overlay's height to cover the bottom 30%
+    &:hover::after {
+      height: 21%;
+    }
+
+    &:not(:hover) .project_details {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+    }
+
+    // After text disappears, revert the overlay
+    &:not(:hover)::after {
+      height: 0%;
+      transition: height 0.5s ease-in 0.3s; /* 0.3s delay */
+    }
+
+    .project_number {
+      position: absolute;
+      width: 3vw;
+      aspect-ratio: 1 / 1;
+      border-radius: 0 0 100% 0;
+      background-color: white;
+      z-index: 3; // Make sure the number stays above the overlay
+
+      .number {
+        position: absolute;
+        left: 0.7vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(1vw, 2vw, 2vw);
+        font-weight: bold;
+        // color: black;
+      }
+    }
+    // Caption text that appears in the lifted area
+    .project_details {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 4; // above the overlay
+
+      opacity: 1; // start hidden
+      transform: translateY(20px); // start slightly lower
+      transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: space-around;
+      align-items: center;
+
+      .project_name {
+        font-size: clamp(1rem, 1.8vw, 1.8rem);
+        // color: black; // text color
+        font-weight: bold;
+      }
+      .project_tech {
+        display: flex;
+        justify-content: end;
+        gap: 2px;
+
+        .tech_icon {
+          width: clamp(1rem, 1.6vw, 1.6rem);
+          // filter: grayscale(100%);
+        }
+      }
+      .project_desc {
+        // font-family: "Poppins";
+        font-size: clamp(1rem, 1.6vw, 1.6rem);
+        font-weight: bold;
+        // color: var(--color-text-muted);
+      }
+      .project_links {
+        display: flex;
+        justify-content: end;
+        gap: 1vw;
+
+        a {
+          // color: rgb(37, 34, 34);
+          text-decoration: none;
+          font-size: clamp(1rem, 1.6vw, 1.6rem);
+          // font-family: "Poiret One";
+          font-weight: bold;
+        }
+        a:visited {
+          color: inherit;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // On hover, reveal the caption
+    &:hover .project_details {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes fade-in-0 {
+  to {
+    filter: grayscale(0%);
+  }
+}
+
+@keyframes fade-in-50 {
+  to {
+    filter: grayscale(70%);
+  }
+}
+
+@media (max-width: 768px) {
+  .project_list {
+    grid-template-columns: 1fr;
+    gap: 5vw;
+    .project_card {
+      position: relative;
+      width: 70vw;
+      max-width: 45rem;
+    }
+  }
 }

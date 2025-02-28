@@ -4,30 +4,26 @@ import { ProjectDesc } from "./ProjectDesc";
 import styles from "./style.module.scss";
 const list = [
   {
-    title: "GimDev",
-    description:
-      "Web development blog built using Rails, Hotwire, Stimulus, and Three.js, providing a dynamic, interactive platform where users can create, update, and delete post",
+    title: "I AM",
+    description: "A full-stack developer from Melbourne, Australia",
     speed: 0.5,
     link: "https://gimdev-lingering-sun-6640.fly.dev/",
   },
   {
-    title: "Memory",
-    description:
-      "A React-based browser game that tests players' memory by randomly shuffling Pokémon cards. The game increases in difficulty as players progress, testing their focus and recall under time pressure.",
+    title: "I LIKE",
+    description: "To solve problems, play with colors and create things.",
     speed: 0.5,
     link: "https://pokemon-theta-eosin.vercel.app/",
   },
   {
-    title: "Flyaway",
-    description:
-      "Inspired by Skyscanner and Google Flight Search, Flyaway is a flight search and booking app that allows users to find, pay and book flights based on their departure and destination cities.",
+    title: "I BELIEVE",
+    description: "In simplicity, coherence, perspective and good design.",
     speed: 1,
     link: "https://flyaway-rails-react.fly.dev/",
   },
   {
-    title: "Odinbook",
-    description:
-      "Odinbook is a Ruby on Rails social media app that allows users to view profiles, create posts, and interact through comments, follows, and likes.",
+    title: "AVAILABLE",
+    description: "Lets work together!",
     speed: 1,
     link: "https://theodinbook.fly.dev/",
   },

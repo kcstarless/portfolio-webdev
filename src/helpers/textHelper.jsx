@@ -3,11 +3,11 @@ import { landingPageText, logoTextAnimation } from "./textAnimationHelper";
 export const textLanding = (isLocked, styles) => {
   return (
     <>
-      <div>{landingPageText("DAVID GIM")}</div>
-      <div className={styles.style_web}>{landingPageText("{ style.web }")}</div>
-      <div>{logoTextAnimation("DEVELOPER")}</div>
-      <div className={styles.click_text}>
-        <div className={styles.text}>
+      <div className={styles.line1}>{landingPageText("DAVID GIM")}</div>
+      <div className={styles.line2}>{landingPageText("{ style.web }")}</div>
+      <div className={styles.line3}>{landingPageText("DEVELOPER")}</div>
+      <div className={styles.line4}>
+        <div className={styles.line4_text}>
           {landingPageText(
             isLocked ? "CLICK ANYWHERE TO ADD COLOR & SOUND." : `SCROLL DOWN`
           )}

@@ -20,10 +20,10 @@ export const landingPageText = (text) => {
         }}
         variants={{
           visible: {
-            transition: { staggerChildren: 0.05 }, // Adjust the delay between letters
+            transition: { staggerChildren: 0.1 }, // Adjust the delay between letters
           },
           exit: {
-            transition: { staggerChildren: 0.05, staggerDirection: -1 },
+            transition: { staggerChildren: 0.1, staggerDirection: -1 },
           },
         }}
       >

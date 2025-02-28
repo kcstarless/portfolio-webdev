@@ -7,9 +7,9 @@ const Content = () => {
   return (
     <>
       <Landing />
-      {/* <About /> */}
+      <About />
       <Project />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

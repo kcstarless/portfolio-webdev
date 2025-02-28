@@ -45,6 +45,7 @@ function Title({ data, setSelectedProject }) {
   function redirect() {
     window.open(link, "_blank");
   }
+
   return (
     <div ref={container} className={styles.title}>
       <div
@@ -56,9 +57,8 @@ function Title({ data, setSelectedProject }) {
           setSelectedProject(null);
         }}
       >
-        <motion.p style={{ clipPath: clip }} onClick={() => redirect(link)}>
-          {title}
-        </motion.p>
+        {/* <motion.p style={{ clipPath: clip }} onClick={() => redirect(link)}> */}
+        <motion.p style={{ clipPath: clip }}>{title}</motion.p>
 
         <p>{title}</p>
       </div>

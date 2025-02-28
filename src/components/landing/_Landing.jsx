@@ -6,11 +6,9 @@ import ProgressCounter from "./ProgressCounter";
 import styles from "./style.module.scss";
 
 const Landing = () => {
-  const sounds = audio;
   const [clickCounter, setClickCounter] = useState(0);
   const [isLocked, setIsLocked] = useState(true); // Use state for scroll lock
   const audioIndex = useRef(0); // Tracks the correct sound index
-  const audioRef = useRef(new Audio(sounds[0])); // Initialize audio instance
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -29,31 +27,26 @@ const Landing = () => {
       window.removeEventListener("wheel", handleScroll, options);
       window.removeEventListener("touchmove", handleScroll, options);
     };
-  }, [isLocked, clickCounter]);
+  }, [isLocked]);
 
   const handleClick = () => {
     if (isLocked) {
-      if (!audioRef.current.paused) return; // Prevent spamming clicks
-
-      // **1. Update color immediately**
+      // Update color immediately
       setClickCounter((prev) => prev + 1);
 
-      // **2. Play the correct sound in sequence**
-      const soundIndex = Math.min(audioIndex.current, sounds.length - 1);
-      audioRef.current.src = sounds[soundIndex];
+      // Create a new Audio instance for each click
+      const newAudio = new Audio(audio[audioIndex.current]);
 
       try {
-        audioRef.current.currentTime = 0; // Reset sound to start
-        audioRef.current.play();
+        newAudio.currentTime = 0; // Reset sound to start
+        newAudio.play();
 
-        // **3. Ensure the next sound plays only after this one ends**
-        audioRef.current.onended = () => {
-          if (audioIndex.current < sounds.length - 1) {
-            audioIndex.current += 1; // Move to the next sound
-          } else {
-            setIsLocked(false); // Unlock after the last sound
-          }
-        };
+        // Move to the next sound in the sequence
+        if (audioIndex.current < audio.length - 1) {
+          audioIndex.current += 1; // Move to the next sound
+        } else {
+          setIsLocked(false); // Unlock after the last sound
+        }
       } catch (err) {
         console.error("Error playing sound:", err);
       }
