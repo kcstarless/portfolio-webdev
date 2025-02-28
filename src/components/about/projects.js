@@ -70,6 +70,27 @@ const projects = () => {
 
     {
       id: 2,
+      name: "ODINBOOK",
+      short: "Social media app",
+      tech_stack: [
+        techStack.Ruby,
+        techStack.Rails,
+        techStack.Postgres,
+        techStack.Sass,
+        techStack.Html,
+        techStack.Css,
+        techStack.Js,
+      ],
+      site_link: "https://theodinbook.fly.dev",
+      github_link: "https://theodinbook.fly.dev",
+      image: imageOdinbook,
+      thumb: thumbOdinbook,
+      description:
+        "Odinbook is a Ruby on Rails social media app that allows users to view profiles, create posts, and interact through comments, follows, and likes. It uses OmniAuth and Devise for authentication, Active Record for database interactions, and Turbo and Stimulus for dynamic UI updates. Mailer handles notifications, and SASS ensures a modern, responsive design.",
+    },
+
+    {
+      id: 3,
       name: "BATTLESHIP",
       short: "Classic board game",
       tech_stack: [techStack.Js, techStack.Html, techStack.Css],
@@ -79,24 +100,6 @@ const projects = () => {
       thumb: thumbBattleship,
       description:
         "The Battleship project is a JavaScript game that recreates the classic Battleship board game. Players place ships on a grid and take turns firing missiles to sink each other's ships. It features a responsive design, real-time updates, and showcases object-oriented programming, event handling, and DOM manipulation.",
-    },
-
-    {
-      id: 3,
-      name: "ODINBOOK",
-      short: "Social media app",
-      tech_stack: [
-        techStack.Ruby,
-        techStack.Rails,
-        techStack.Postgres,
-        techStack.Sass,
-      ],
-      site_link: "https://theodinbook.fly.dev",
-      github_link: "https://theodinbook.fly.dev",
-      image: imageOdinbook,
-      thumb: thumbOdinbook,
-      description:
-        "Odinbook is a Ruby on Rails social media app that allows users to view profiles, create posts, and interact through comments, follows, and likes. It uses OmniAuth and Devise for authentication, Active Record for database interactions, and Turbo and Stimulus for dynamic UI updates. Mailer handles notifications, and SASS ensures a modern, responsive design.",
     },
 
     {

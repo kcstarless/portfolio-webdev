@@ -5,7 +5,7 @@ import styles from "./style.module.scss";
 const list = [
   {
     title: "I AM",
-    description: "A full-stack developer from Melbourne, Australia",
+    description: "A full-stack developer from Melbourne, Australia.",
     speed: 0.5,
     link: "https://gimdev-lingering-sun-6640.fly.dev/",
   },
