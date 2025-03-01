@@ -26,7 +26,8 @@ const About = () => {
           .reverse()
           .map((project, index) => (
             <div key={index} className={styles.project_card}>
-              <img src={project.image} className={styles.project_image} />
+              <div className={styles.image_overlay}></div>
+              <img src={project.thumb} className={styles.project_image} />
 
               <div className={styles.project_number}>
                 <span className={styles.number}>{project.id}</span>
