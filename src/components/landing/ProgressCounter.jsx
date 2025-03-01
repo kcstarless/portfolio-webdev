@@ -39,7 +39,7 @@ const ProgressCounter = ({ clickCounter }) => {
         </defs>
         <text>
           <textPath xlinkHref="#circlePath">
-            CLICK • CLICK • CLICK • CLICK •
+            CLICK • TO • ADD • SOUND • COLOR •
           </textPath>
         </text>
       </svg>

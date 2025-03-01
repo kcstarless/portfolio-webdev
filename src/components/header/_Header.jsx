@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useScroll, motion } from "framer-motion";
+import SidePanel from "./SidePanel";
 import {
   logoTextAnimation,
   menuTextAnimation,
@@ -50,7 +51,7 @@ const Header = () => {
         </div>
 
         <div className={styles.menu_container}>
-          <div className={styles.menu_item}>
+          <div className={styles.blog_button}>
             <a
               href="https://gimdev-lingering-sun-6640.fly.dev/"
               data-text="BLOG"
@@ -60,15 +61,7 @@ const Header = () => {
               <span>{menuTextAnimation("BLOG")}</span>
             </a>
           </div>
-          <div className={styles.menu_item}>
-            <a
-              href="mailto:example@example.com"
-              data-text="CONTACT"
-              className="menu_link"
-            >
-              <span>{menuTextAnimation("CONTACT")}</span>
-            </a>
-          </div>
+          <SidePanel />
         </div>
       </motion.header>
     </div>

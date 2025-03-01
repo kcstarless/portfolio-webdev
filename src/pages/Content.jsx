@@ -9,7 +9,6 @@ const Content = () => {
       <Landing />
       <About />
       <Project />
-      {/* <Footer /> */}
     </>
   );
 };

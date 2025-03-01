@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   height: 0; /* Makes wrapper invisible for layout purposes */
-  z-index: 200; /* Same as header's original z-index */
+  z-index: 900; /* Same as header's original z-index */
 }
 
 header {
@@ -12,12 +12,8 @@ header {
   padding: var(--space-m);
   align-items: center;
 
-  position: sticky;
-  top: 0;
-
   font-family: "Inter";
   font-weight: 800;
-
   transition: top 1s ease-in;
 }
 
@@ -70,7 +66,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: var(--space-xl);
-
+  position: relative;
   font-size: var(--font-size-s);
 
   .menu_item {
@@ -83,5 +79,144 @@ header {
   .letter {
     letter-spacing: var(--space-xxxxxs);
     display: "inline-block"; // Ensure each letter is treated as a block
+  }
+
+  .contact_menu {
+    position: relative;
+  }
+
+  .dialog_box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    inset-inline-start: unset;
+    border: none;
+    width: 25rem;
+    height: 100vh;
+    background-color: rgba(240, 240, 240, 0.99);
+    animation: slideInFromRight 1s ease-out forwards;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    text-align: right;
+    gap: 2vh;
+
+    font-family: "Marcellus";
+
+    .dialog_title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      button {
+        &.close_button {
+          align-self: start;
+          font-size: clamp(1.5rem, 2rem, 4rem);
+          border: none;
+          color: white;
+          text-shadow: -1px -1px 2px rgb(80, 80, 80);
+          background-color: transparent;
+          cursor: pointer;
+        }
+      }
+      h1 {
+        font-size: clamp(1.5rem, 2rem, 4rem);
+        text-shadow: 2px 2px 2px rgb(226, 226, 226);
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2vh, 5vh, 5vh);
+      width: 100%;
+
+      div {
+        font-size: clamp(1rem, 1vw, 3rem);
+      }
+
+      input,
+      textarea {
+        width: 80%;
+        font-size: clamp(1rem, 1vw, 3rem);
+        background-color: transparent;
+        border: none;
+        border-bottom: solid 2px #b7ab98;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      input:focus {
+        outline: none;
+        color: var(--color-text-header);
+        padding-left: 20px;
+      }
+      textarea {
+        border: solid 2px #b7ab98;
+        border-radius: 5px;
+        height: clamp(10vh, 25vh, 25vh);
+        width: 100%;
+      }
+      textarea:focus {
+        outline: none;
+        color: var(--color-text-header);
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.submit_button {
+  width: 100%;
+  appearance: button;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, #fff, #f8eedb);
+  border: 0 solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #482307;
+  column-gap: 1rem;
+  cursor: pointer;
+  display: flex;
+  font-family: "Prata";
+  font-size: 100%;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+  outline: 2px solid transparent;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  text-transform: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: rgba(72, 35, 7, 0.46) 0 0 0 1px;
+  &:active {
+    background-color: #b7ab98;
+    text-shadow: -1px -1px 2px rgb(255, 255, 255);
+  }
+
+  &:hover {
+    color: black;
+  }
+}
+
+@media (max-width: 700px) {
+  .dialog_box {
+    width: 100vw !important;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen on the right */
+  }
+  100% {
+    transform: translateX(0); /* End at its final position */
   }
 }
