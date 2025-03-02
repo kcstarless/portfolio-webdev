@@ -48,15 +48,19 @@
         255,
         255,
         255,
-        0.2
+        0.4
       ); /* Adds semi-transparent white background */
 
       opacity: 1; /* Adjust opacity for noise effect */
       z-index: 1;
-      filter: brightness(0.65);
+      filter: brightness(0.75);
     }
     &:hover .image_overlay {
       opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+    &:not(:hover) .image_overlay {
+      opacity: 1; /* Reverse animation on mouse leave */
       transition: opacity 1s ease-out;
     }
     .project_image {

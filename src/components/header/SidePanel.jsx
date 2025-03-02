@@ -26,21 +26,25 @@ const SidePanel = () => {
 export default SidePanel;
 
 const DialogBox = ({ setIsOpen }) => {
+  const [isClosed, setIsClosed] = useState(false);
+  const handleClose = () => {
+    setIsClosed(true);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 1000);
+  };
   return (
-    <div className={styles.dialog_box} open>
+    <dialog className={`${styles.dialog_box} ${isClosed ? styles.closed : ""}`}>
       <div className={styles.dialog_title}>
-        <button
-          className={styles.close_button}
-          onClick={() => setIsOpen(false)}
-        >
+        <button className={styles.close_button} onClick={handleClose}>
           X
         </button>
         <h1>CONTACT ME</h1>
       </div>
 
-      <p>If you have any questions or just like to say 'Hi'!</p>
+      <p>If you have any questions or just like to say 'Hi!'.</p>
       <ContactForm />
-    </div>
+    </dialog>
   );
 };
 
@@ -48,7 +52,7 @@ const ContactForm = () => {
   return (
     <form>
       <div className={styles.input_contianer}>
-        <div className={styles.name}>NAME</div>
+        <div className={styles.name}>Name</div>
         <input type="text" className={styles.name_input}></input>
       </div>
       <div className={styles.input_contianer}>
@@ -56,11 +60,11 @@ const ContactForm = () => {
         <input type="email" className={styles.name_input}></input>
       </div>
       <div className={styles.input_contianer}>
-        <div className={styles.email_address}>EMAIL ADDRESS</div>
+        <div className={styles.email_address}>Email address</div>
         <input type="email" className={styles.name_input}></input>
       </div>
       <div className={styles.input_contianer}>
-        <div className={styles.email_address}>MESSAGE</div>
+        <div className={styles.email_address}>Message</div>
         <br />
         <textarea className={styles.name_input}></textarea>
       </div>
