@@ -141,8 +141,9 @@ form {
   flex-direction: column;
   gap: clamp(2vh, 5vh, 5vh);
   width: 100%;
+
   div {
-    font-size: clamp(1rem, 1vw, 3rem);
+    font-size: clamp(1.2rem, 1.5rem, 3rem);
   }
 
   input,
@@ -162,7 +163,7 @@ form {
     outline: none;
     color: var(--color-text-header);
     padding-left: 10px;
-    border-bottom: solid 2px rgb(253, 4, 4);
+    border-bottom: solid 2px rgb(255, 119, 119);
     color: white;
   }
 
@@ -177,8 +178,18 @@ form {
   textarea:focus {
     outline: none;
     color: var(--color-text-header);
-    border: solid 2px rgb(253, 4, 4);
+    border: solid 2px rgb(255, 119, 119);
     color: white;
+  }
+  .input_label {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
+
+  .error {
+    // font-size: clamp(0.6rem, 0.8rem, 0.8rem);
+    color: rgb(255, 119, 119);
   }
 
   @keyframes borderEffect {

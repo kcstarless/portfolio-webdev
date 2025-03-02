@@ -1,6 +1,7 @@
 #about {
-  position: sticky;
-  top: 0;
+  // position: sticky;
+  // top: 0;
+  z-index: 2;
   background-color: #eeeee4;
   font-family: "Alumni Sans Pinstripe";
   display: flex;
@@ -73,7 +74,7 @@
       // filter: brightness(0.95);
       transition: filter 0.5s ease-out;
       // border: solid 1px gray;
-      z-index: -1;
+      z-index: 0;
     }
     &:hover .project_image {
       filter: grayscale(0%);
