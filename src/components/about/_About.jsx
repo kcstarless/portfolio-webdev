@@ -17,46 +17,48 @@ const About = () => {
   }, []);
 
   return (
-    <section id={styles.about}>
-      <div className={styles.project_header}>PROJECTS</div>
+    <div className={styles.sticky_wrapper}>
+      <section id={styles.about}>
+        <div className={styles.project_header}>PROJECTS</div>
 
-      <div className={styles.project_list}>
-        {projects()
-          .slice(-4)
-          .reverse()
-          .map((project, index) => (
-            <div key={index} className={styles.project_card}>
-              <div className={styles.image_overlay}></div>
-              <img src={project.thumb} className={styles.project_image} />
+        <div className={styles.project_list}>
+          {projects()
+            .slice(-4)
+            .reverse()
+            .map((project, index) => (
+              <div key={index} className={styles.project_card}>
+                <div className={styles.image_overlay}></div>
+                <img src={project.thumb} className={styles.project_image} />
 
-              <div className={styles.project_number}>
-                <span className={styles.number}>{project.id}</span>
-              </div>
-
-              <div className={styles.project_details}>
-                <div className={styles.project_name}>{project.name}</div>
-                <div className={styles.project_tech}>
-                  {project.tech_stack.map((tech, index) => (
-                    <span key={index}>
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        className={styles.tech_icon}
-                      />
-                    </span>
-                  ))}
+                <div className={styles.project_number}>
+                  <span className={styles.number}>{project.id}</span>
                 </div>
 
-                <div className={styles.project_desc}>{project.short}</div>
-                <div className={styles.project_links}>
-                  <a href={project.site_link}>DEMO</a>
-                  <a href={project.github_link}>GITHUB</a>
+                <div className={styles.project_details}>
+                  <div className={styles.project_name}>{project.name}</div>
+                  <div className={styles.project_tech}>
+                    {project.tech_stack.map((tech, index) => (
+                      <span key={index}>
+                        <img
+                          src={tech.icon}
+                          alt={tech.name}
+                          className={styles.tech_icon}
+                        />
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={styles.project_desc}>{project.short}</div>
+                  <div className={styles.project_links}>
+                    <a href={project.site_link}>DEMO</a>
+                    <a href={project.github_link}>GITHUB</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-      </div>
-    </section>
+            ))}
+        </div>
+      </section>
+    </div>
   );
 };
 

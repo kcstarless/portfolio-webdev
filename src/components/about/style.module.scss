@@ -1,6 +1,13 @@
+// .sticky_wrapper {
+//   position: sticky;
+//   top: 0;
+//   height: 0; /* Makes wrapper invisible for layout purposes */
+//   z-index: 100; /* Same as header's original z-index */
+// }
+
 #about {
-  // position: sticky;
-  // top: 0;
+  position: sticky;
+  top: 0;
   z-index: 2;
   background-color: #eeeee4;
   font-family: "Alumni Sans Pinstripe";
@@ -22,6 +29,7 @@
 
 .project_list {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
@@ -30,7 +38,7 @@
 
   .project_card {
     position: relative;
-    width: clamp(15rem, 40vw, 50rem);
+    width: clamp(28rem, 40vw, 50rem);
     max-width: 45rem;
     aspect-ratio: 16 / 9;
     overflow: hidden; // Ensures the overlay doesn’t spill out
@@ -212,18 +220,70 @@
 }
 
 @media (max-width: 600px) {
+  #about {
+    position: normal;
+    height: 100%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+  }
   .project_list {
     grid-template-columns: 1fr;
     gap: 5vw;
     .project_card {
-      width: 90vw;
-      aspect-ratio: 16 / 7;
+      width: 95vw;
+      aspect-ratio: 16 / 9;
       .project_image {
         scale: 1;
         object-fit: cover;
       }
       &:hover::after {
         height: 23%;
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  #about {
+    position: normal;
+    height: 100%;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  .project_list {
+    grid-template-columns: 1fr;
+    gap: 5vw;
+    .project_card {
+      width: 70vw;
+      aspect-ratio: 16 / 7.5;
+      .project_image {
+        scale: 1;
+        object-fit: cover;
+      }
+      &:hover::after {
+        height: 23%;
+      }
+      .project_details {
+        .project_name {
+          font-size: 3vw;
+        }
+        .project_tech {
+          display: flex;
+          justify-content: end;
+          gap: 2px;
+
+          .tech_icon {
+            width: 3vw;
+          }
+        }
+        .project_desc {
+          font-size: 2.5vw;
+        }
+        .project_links {
+          a {
+            font-size: 2.5vw;
+          }
+        }
       }
     }
   }

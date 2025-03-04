@@ -104,29 +104,6 @@ const projects = () => {
 
     {
       id: 4,
-      name: "FLYAWAY",
-      short: "Real-time flight booking app",
-      tech_stack: [
-        techStack.Ruby,
-        techStack.Rails,
-        techStack.React,
-        techStack.Postgres,
-        techStack.Sass,
-        techStack.Js,
-        techStack.Css,
-        techStack.Html,
-        techStack.Mui,
-      ],
-      site_link: "https://flyaway-rails-react.fly.dev/",
-      github_link: "https://github.com/kcstarless/theodinbook",
-      image: imageFlyaway,
-      thumb: thumbFlyaway,
-      description:
-        "Inspired by Skyscanner and Google Flight Search, Flyaway is a flight search and booking app that allows users to find and book flights based on their departure and destination cities. The app utilizes the Amadeus API to fetch real-time flight data, presenting the results in a clean and user-friendly format. Users can filter flights by price, airline, and departure time, and view detailed flight information. Flyaway combines a Ruby on Rails API backend with a React frontend to deliver a seamless experience for flight search and booking.",
-    },
-
-    {
-      id: 5,
       name: "POKEMON",
       short: "Memory game",
       tech_stack: [
@@ -148,7 +125,7 @@ const projects = () => {
     },
 
     {
-      id: 6,
+      id: 5,
       name: "GIMDEV",
       short: "Personal blog site",
       tech_stack: [
@@ -168,6 +145,29 @@ const projects = () => {
       thumb: thumbGimdev,
       description:
         "My personal web development blog is built using Rails, Hotwire, Stimulus, and Three.js, providing a dynamic, interactive platform where users can create, update, and delete posts. The site features authentication, ensuring that only authorized users can manage their content. I specifically wanted to experiment with Three.js for 3D rendering on the web, adding an immersive visual element to the blog. This project not only allows me to share my thoughts and experiences but also helps me track my progress in learning web development, especially with new technologies like Three.js.",
+    },
+
+    {
+      id: 6,
+      name: "FLYAWAY",
+      short: "Real-time flight booking app",
+      tech_stack: [
+        techStack.Ruby,
+        techStack.Rails,
+        techStack.React,
+        techStack.Postgres,
+        techStack.Sass,
+        techStack.Js,
+        techStack.Css,
+        techStack.Html,
+        techStack.Mui,
+      ],
+      site_link: "https://flyaway-rails-react.fly.dev/",
+      github_link: "https://github.com/kcstarless/theodinbook",
+      image: imageFlyaway,
+      thumb: thumbFlyaway,
+      description:
+        "Inspired by Skyscanner and Google Flight Search, Flyaway is a flight search and booking app that allows users to find and book flights based on their departure and destination cities. The app utilizes the Amadeus API to fetch real-time flight data, presenting the results in a clean and user-friendly format. Users can filter flights by price, airline, and departure time, and view detailed flight information. Flyaway combines a Ruby on Rails API backend with a React frontend to deliver a seamless experience for flight search and booking.",
     },
   ];
 };
