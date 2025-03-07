@@ -6,16 +6,18 @@
 // }
 
 #project {
-  position: sticky;
+  // position: sticky;
   top: 0;
   z-index: 2;
   background-color: #eeeee4;
+  // background-color: transparent;
   font-family: "Alumni Sans Pinstripe";
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1vw;
   color: var(--color-text-header);
+  height: 100vh;
 }
 
 .project_header {
