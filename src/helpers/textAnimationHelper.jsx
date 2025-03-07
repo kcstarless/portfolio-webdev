@@ -105,3 +105,5 @@ export const menuTextAnimation = (text) => {
     </AnimatePresence>
   );
 };
+
+export const viewallTextAnimation = (text) => {};

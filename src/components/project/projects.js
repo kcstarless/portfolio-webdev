@@ -51,6 +51,7 @@ const projects = () => {
   return [
     {
       id: 1,
+      year: 2023,
       name: "UMBRELLA",
       short: "Real-time weather data",
       tech_stack: [
@@ -70,6 +71,7 @@ const projects = () => {
 
     {
       id: 2,
+      year: 2023,
       name: "ODINBOOK",
       short: "Social media app",
       tech_stack: [
@@ -91,6 +93,7 @@ const projects = () => {
 
     {
       id: 3,
+      year: 2024,
       name: "BATTLESHIP",
       short: "Classic board game",
       tech_stack: [techStack.Js, techStack.Html, techStack.Css],
@@ -104,6 +107,7 @@ const projects = () => {
 
     {
       id: 4,
+      year: 2024,
       name: "POKEMON",
       short: "Memory game",
       tech_stack: [
@@ -126,6 +130,7 @@ const projects = () => {
 
     {
       id: 5,
+      year: 2025,
       name: "GIMDEV",
       short: "Personal blog site",
       tech_stack: [
@@ -149,8 +154,9 @@ const projects = () => {
 
     {
       id: 6,
+      year: 2024,
       name: "FLYAWAY",
-      short: "Real-time flight booking app",
+      short: "Real-time flight booking",
       tech_stack: [
         techStack.Ruby,
         techStack.Rails,

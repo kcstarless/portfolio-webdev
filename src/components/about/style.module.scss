@@ -1,307 +1,123 @@
-// .sticky_wrapper {
-//   position: sticky;
-//   top: 0;
-//   height: 0; /* Makes wrapper invisible for layout purposes */
-//   z-index: 100; /* Same as header's original z-index */
-// }
-
 #about {
   position: sticky;
   top: 0;
-  z-index: 2;
-  background-color: #eeeee4;
-  font-family: "Alumni Sans Pinstripe";
+  z-index: 3;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1vw;
-  height: 100vh;
-  color: var(--color-text-header);
-}
+  flex-direction: column;
+  user-select: none;
+  background-color: rgb(31, 29, 29);
+  padding-top: 35px;
+  background-color: black;
 
-.project_header {
-  font-size: clamp(1rem, 3rem, 3rem);
-  text-align: center;
-  // color: rgb(255, 2, 2);
-  font-weight: bold;
-  padding-bottom: 2vw;
-}
+  .project_banner {
+    // white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: rgb(255, 179, 64);
 
-.project_list {
-  display: grid;
+    width: 100%;
+    font-family: "Alumni Sans Pinstripe";
+    font-weight: 700;
+    background-color: transparent;
 
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  // border: solid 1px black;
-  gap: 2vw;
+    p {
+      margin: 0px;
+      font-size: clamp(3rem, 5vw, 5rem);
+    }
 
-  .project_card {
+    p:nth-oftype(2) {
+      position: absolute;
+      left: 100%;
+    }
+  }
+
+  .project_canvas {
+    // border: solid 1px white;
     position: relative;
-    width: clamp(28rem, 40vw, 50rem);
-    max-width: 45rem;
-    aspect-ratio: 16 / 9;
-    overflow: hidden; // Ensures the overlay doesn’t spill out
-    // filter: grayscale(100%);
-    // animation: fade-in-50 linear forwards;
-    // animation-timeline: view();
-    // animation-range-start: 300px;
-    // animation-range-end: 300px;
-    .image_overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: url("/noise.png");
-      backdrop-filter: blur(500px); /* Creates a blur effect behind the veil */
-      background-color: rgba(
-        255,
-        255,
-        255,
-        0.4
-      ); /* Adds semi-transparent white background */
+  }
 
-      opacity: 1; /* Adjust opacity for noise effect */
-      z-index: 1;
-      filter: brightness(0.75);
-    }
-    &:hover .image_overlay {
-      opacity: 0;
-      transition: opacity 1s ease-out;
-    }
-    &:not(:hover) .image_overlay {
-      opacity: 1; /* Reverse animation on mouse leave */
-      transition: opacity 1s ease-out;
-    }
-    .project_image {
-      position: absolute;
+  .project_list {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    font-family: "Alumni Sans Pinstripe";
+    .titles {
       width: 100%;
-      height: 100%;
-      scale: 1;
-      object-fit: cover;
-      filter: grayscale(0); // Apply filter on the image directly
-      // filter: brightness(0.95);
-      transition: filter 0.5s ease-out;
-      // border: solid 1px gray;
-      z-index: 0;
+      border-top: 1px solid rgba(183, 171, 152, 0.25);
+
+      .title {
+        border-bottom: 1px solid rgba(183, 171, 152, 0.25);
+        cursor: default;
+        position: relative;
+        z-index: 2;
+
+        .wrapper {
+          display: inline-block;
+          padding-left: 10%;
+
+          p {
+            width: 100%;
+            display: inline-block;
+            color: rgb(255, 179, 64);
+            font-weight: 700;
+            font-size: clamp(3rem, 6vw, 6rem);
+            position: relative;
+            z-index: 2;
+            white-space: nowrap;
+
+            &:nth-of-type(2) {
+              width: 100%;
+              display: block;
+              position: absolute;
+              color: #6e6e6e;
+              top: 0;
+              z-index: 1;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
     }
-    &:hover .project_image {
-      filter: grayscale(0%);
-      filter: brightness(1);
-    }
-    // Create the curtain overlay using a pseudo-element
-    &::after {
-      content: "";
+
+    .descriptions {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      top: 0;
       width: 100%;
-      height: 0%; // starts with no overlay
-      background-color: #eeeee4; // change to desired color or transparency
-      transition: height 0.5s ease-out; // smooth animation
+      // height: 100%;
       z-index: 2;
-    }
+      pointer-events: none;
 
-    // On hover, increase the overlay's height to cover the bottom 30%
-    &:hover::after {
-      height: 21%;
-    }
-
-    &:not(:hover) .project_details {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-    }
-
-    // After text disappears, revert the overlay
-    &:not(:hover)::after {
-      height: 0%;
-      transition: height 0.5s ease-in 0.3s; /* 0.3s delay */
-    }
-
-    .project_number {
-      position: absolute;
-      width: clamp(2rem, 3.5vw, 4rem);
-      aspect-ratio: 1 / 1;
-      border-radius: 0 0 100% 0;
-      background-color: #eeeee4;
-      z-index: 3; // Make sure the number stays above the overlay
-      // border: solid 1px gray;
-      // border-left: none;
-      // border-top: none;
-
-      .number {
-        position: absolute;
-        width: 100%;
+      .description {
+        background-color: rgb(255, 179, 64);
         display: flex;
-        padding-right: 7px;
-        justify-content: center;
-        font-size: clamp(1.5rem, 2vw, 2.5rem);
-        font-weight: bold;
-        color: var(--color-text-header);
-        // border: solid 1px black;
-      }
-    }
-    // Caption text that appears in the lifted area
-    .project_details {
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      z-index: 4; // above the overlay
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 1px;
+        clip-path: inset(50% 0 50%);
+        transition: clip-path 0.4s;
 
-      opacity: 1; // start hidden
-      transform: translateY(20px); // start slightly lower
-      transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-content: space-around;
-      align-items: center;
-
-      .project_name {
-        font-size: clamp(1rem, 1.8vw, 1.8rem);
-        // color: black; // text color
-        font-weight: bold;
-      }
-      .project_tech {
-        display: flex;
-        justify-content: end;
-        gap: 2px;
-
-        .tech_icon {
-          width: clamp(1rem, 1.6vw, 1.6rem);
-          // filter: grayscale(100%);
-        }
-      }
-      .project_desc {
-        // font-family: "Poppins";
-        font-size: clamp(1rem, 1.6vw, 1.6rem);
-        font-weight: bold;
-        // color: var(--color-text-muted);
-      }
-      .project_links {
-        display: flex;
-        justify-content: end;
-        gap: 1vw;
-
-        a {
-          // color: rgb(37, 34, 34);
-          text-decoration: none;
-          font-size: clamp(0.8rem, 1.6vw, 1.6rem);
-          // font-family: "Poiret One";
-          font-weight: bold;
-        }
-        a:visited {
-          color: inherit;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    // On hover, reveal the caption
-    &:hover .project_details {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-@keyframes fade-in-0 {
-  to {
-    filter: grayscale(0%);
-  }
-}
-
-@keyframes fade-in-50 {
-  to {
-    filter: grayscale(70%);
-  }
-}
-
-@media (max-width: 600px) {
-  #about {
-    position: normal;
-    height: 100%;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-  }
-  .project_list {
-    grid-template-columns: 1fr;
-    gap: 5vw;
-    .project_card {
-      width: 95vw;
-      aspect-ratio: 16 / 9;
-      .project_image {
-        scale: 1;
-        object-fit: cover;
-      }
-      &:hover::after {
-        height: 23%;
-      }
-    }
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  #about {
-    position: normal;
-    height: 100%;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-  }
-  .project_list {
-    grid-template-columns: 1fr;
-    gap: 5vw;
-    .project_card {
-      width: 70vw;
-      aspect-ratio: 16 / 7.5;
-      .project_image {
-        scale: 1;
-        object-fit: cover;
-      }
-      &:hover::after {
-        height: 23%;
-      }
-      .project_details {
-        .project_name {
-          font-size: 3vw;
-        }
-        .project_tech {
-          display: flex;
-          justify-content: end;
-          gap: 2px;
-
-          .tech_icon {
-            width: 3vw;
+        p {
+          &:nth-of-type(1) {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: clamp(3rem, 6vw, 6rem);
+            // line-height: 6rem;
+            position: relative;
+            z-index: 1;
+          }
+          &:nth-of-type(2) {
+            width: 40%;
+            font-size: clamp(0.5rem, 2vw, 1.3rem);
+            // font-weight: 700;
+            color: white;
+            font-family: "Poppins";
           }
         }
-        .project_desc {
-          font-size: 2.5vw;
-        }
-        .project_links {
-          a {
-            font-size: 2.5vw;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1400px) and (max-height: 800px) {
-  .project_list {
-    gap: 2w;
-
-    .project_card {
-      width: clamp(12vw, 40vw, 40vw);
-      max-width: 50rem; // Allow larger cards on big screens
-      aspect-ratio: 16 / 7;
-
-      .project_image {
-      }
-      &:hover::after {
-        height: 25%;
       }
     }
   }
