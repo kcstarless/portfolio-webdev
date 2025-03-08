@@ -1,42 +1,11 @@
 import styles from "./aboutme.module.scss";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const words = [
-  "Scalable",
-  "Movies",
-  "COPY CAT",
-  "Problem-solver",
-  "Driven",
-  "Introvert",
-  "User-focused",
-  "Leadership",
-  "Big Eater",
-  "Dynamic",
-  "Self-Learner",
-  "Creative",
-  "Early Riser",
-  "Design",
-  "Health freak",
-  "Swimmer",
-  "Thinker",
-  "Focused",
-  "Listener",
-  "COOK",
-  "Resourceful",
-  "Music",
-  "Innovative",
-  "Ice Cream",
-  "Analytical",
-  "Collaborative",
-  "Versatile",
-  "Passionate",
-  "Visual",
-  "Adaptable",
-];
+import { words } from "./helper";
 
 const AboutMe = () => {
   const [activeIndex, setActiveIndex] = useState(12);
+  const [rotate, setRotate] = useState(false);
   const containerRef = useRef(null);
   const wordsRef = useRef([]);
 
@@ -67,7 +36,7 @@ const AboutMe = () => {
       });
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [rotate]);
 
   return (
     <section id={styles.aboutme}>
