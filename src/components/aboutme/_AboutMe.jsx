@@ -26,6 +26,7 @@ const AboutMe = () => {
 
   // Auto-change word
   useEffect(() => {
+    // if (!rotate) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => {
         let newIndex;
@@ -36,7 +37,7 @@ const AboutMe = () => {
       });
     }, 3000);
     return () => clearInterval(interval);
-  }, [rotate]);
+  }, []);
 
   return (
     <section id={styles.aboutme}>
