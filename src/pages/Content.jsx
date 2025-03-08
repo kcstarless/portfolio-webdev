@@ -8,7 +8,7 @@ const Content = () => {
   return (
     <>
       <Landing />
-      {/* <AboutMe /> */}
+      <AboutMe />
       <Project />
       <About />
     </>

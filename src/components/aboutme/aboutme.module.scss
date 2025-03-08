@@ -1,0 +1,52 @@
+#aboutme {
+  display: flex;
+  flex-direction: row;
+  //   background-color: #b1d38b;
+  color: black;
+  font-family: "Bebas Neue";
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-xxl);
+}
+/* 
+    The text_container acts as the viewport for the rotating list.
+    No fixed height or overflow is used so that the list remains dynamic.
+  */
+.text_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 
+    The words_list is arranged vertically and its position is shifted dynamically.
+  */
+.words_list {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Each word is centered using flex properties */
+.word {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 5px 0; // Optional padding for spacing
+  color: rgb(56, 55, 55);
+  text-transform: uppercase;
+  transition: color 0.5s ease-in-out;
+  line-height: 90px;
+}
+.active {
+  color: black;
+}

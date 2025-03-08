@@ -23,7 +23,7 @@ const list = [
     link: "https://flyaway-rails-react.fly.dev/",
   },
   {
-    title: "COLLABORATE",
+    title: "CREATE",
     description: "READY TO BUILD SOMETHING GREAT TOGETHER.",
     speed: 1,
     link: "https://theodinbook.fly.dev/",

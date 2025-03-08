@@ -43,7 +43,7 @@ export const ProjectHeader = () => {
   return (
     <div className={styles.project_banner}>
       {/* <h1>HELLO HELLO</h1> */}
-      <p>about me</p>
+      {/* <p>about me</p> */}
     </div>
   );
 };
