@@ -17,7 +17,7 @@
   align-items: center;
   gap: 1vw;
   color: var(--color-text-header);
-  height: 100vh;
+  // height: 100%;
 }
 
 .project_header {
@@ -393,7 +393,7 @@
 }
 
 @media (max-width: 600px) {
-  #about {
+  #project {
     position: normal;
     height: 100%;
     padding-top: 2vh;
@@ -417,7 +417,7 @@
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-  #about {
+  #project {
     position: normal;
     height: 100%;
     padding-top: 5vh;
