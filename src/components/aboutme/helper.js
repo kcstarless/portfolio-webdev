@@ -16,7 +16,6 @@ export const words = [
   "Health freak",
   "Full-Stack",
   "Swimmer",
-  "Thinker",
   "Focused",
   "Listener",
   "COOK",
