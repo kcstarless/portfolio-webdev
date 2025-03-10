@@ -39,18 +39,11 @@ const Accordion = ({
   const isOpen = id === expanded;
   const videoRef = useRef(null);
 
-  // Preload video when component mounts
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load(); // Preload the video when the component is mounted
-    }
-  }, []);
-
   useEffect(() => {
     if (isOpen && videoRef.current) {
       videoRef.current.play();
     }
-  }, [isOpen]); // Play video when the accordion is expanded
+  }, [isOpen]);
 
   return (
     <AnimatePresence initial={false}>
@@ -93,12 +86,11 @@ const Accordion = ({
                 muted
                 loop
                 playsInline
-                preload="auto"
               />
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }} // Delays text appearing
+                transition={{ delay: 1, duration: 0.5 }}
                 className={styles.video_text}
               >
                 {text}
@@ -112,27 +104,57 @@ const Accordion = ({
 };
 
 const HowIWork = () => {
-  const [expanded, setExpanded] = useState(1); // Set to null initially
+  const [expanded, setExpanded] = useState(1);
+  const [videosLoaded, setVideosLoaded] = useState(false);
+
+  useEffect(() => {
+    let loadedCount = 0;
+    const preloadContainer = document.createElement("div");
+    preloadContainer.style.display = "none";
+
+    accordionData.forEach(({ video }) => {
+      const vid = document.createElement("video");
+      vid.src = video;
+      vid.preload = "auto";
+      vid.oncanplaythrough = () => {
+        loadedCount++;
+        if (loadedCount === accordionData.length) {
+          setVideosLoaded(true);
+        }
+      };
+      preloadContainer.appendChild(vid);
+    });
+
+    document.body.appendChild(preloadContainer);
+
+    return () => {
+      document.body.removeChild(preloadContainer);
+    };
+  }, []);
 
   return (
     <section id={styles.howiwork}>
       <div className={styles.container}>
         <Header expanded={expanded} />
 
-        <div className={styles.main_container}>
-          {accordionData.map(({ id, title, video, image, text }) => (
-            <Accordion
-              key={id}
-              id={id}
-              title={title}
-              video={video}
-              image={image}
-              text={text}
-              expanded={expanded}
-              setExpanded={setExpanded}
-            />
-          ))}
-        </div>
+        {videosLoaded ? (
+          <div className={styles.main_container}>
+            {accordionData.map(({ id, title, video, image, text }) => (
+              <Accordion
+                key={id}
+                id={id}
+                title={title}
+                video={video}
+                image={image}
+                text={text}
+                expanded={expanded}
+                setExpanded={setExpanded}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.loading}>Loading...</div>
+        )}
       </div>
     </section>
   );
