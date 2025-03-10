@@ -25,7 +25,7 @@ const Accordion = ({
       <motion.div
         key={id}
         onClick={() => setExpanded(isOpen ? null : id)}
-        animate={{ width: isOpen ? "70vw" : "4vw" }}
+        animate={{ width: isOpen ? "70vw" : "clamp(1rem, 4.5rem, 4.5rem" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className={styles.accordion}
       >
@@ -34,13 +34,13 @@ const Accordion = ({
             <img
               className={styles.preview_image}
               src={image}
-              style={{
-                filter: isOpen ? "brightness(100%)" : "brightness(30%)",
-              }}
+              // style={{
+              //   filter: isOpen ? "grayscale(100)" : "grayscale(80)",
+              // }}
             />
             <div className={styles.preview_title}>
-              <div className={styles.id}>0{id}</div>
               <div className={styles.title}>{title}</div>
+              <div className={styles.id}>0{id}</div>
             </div>
           </div>
         )}
