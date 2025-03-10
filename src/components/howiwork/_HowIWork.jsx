@@ -39,6 +39,13 @@ const Accordion = ({
   const isOpen = id === expanded;
   const videoRef = useRef(null);
 
+  // Preload video when component mounts
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load(); // Preload the video when the component is mounted
+    }
+  }, []);
+
   useEffect(() => {
     if (isOpen && videoRef.current) {
       videoRef.current.play();
@@ -86,6 +93,7 @@ const Accordion = ({
                 muted
                 loop
                 playsInline
+                preload="auto"
               />
               <motion.div
                 initial={{ opacity: 0 }}
