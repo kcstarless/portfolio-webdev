@@ -16,7 +16,7 @@ const Header = ({ expanded }) => {
 };
 
 const HowIWork = () => {
-  const [expanded, setExpanded] = useState(null);
+  const [expanded, setExpanded] = useState(1);
   const [videosLoaded, setVideosLoaded] = useState(false);
 
   useEffect(() => {

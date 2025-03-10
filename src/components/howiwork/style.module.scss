@@ -14,17 +14,18 @@
 
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
   color: rgb(56, 55, 55);
   font-weight: bold;
   font-family: "Bebas Neue";
+  padding-right: 2vw;
+  padding-left: 2vw;
 
   .left,
   .right {
     font-size: var(--font-size-xl);
     font-weight: bold;
-    width: 5vw;
     .number {
       color: red;
     }
