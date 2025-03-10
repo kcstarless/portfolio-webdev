@@ -3,12 +3,14 @@ import Landing from "../components/landing/_Landing";
 import About from "../components/about/_About";
 import Project from "../components/project/_Project";
 import AboutMe from "../components/aboutme/_AboutMe";
+import HowIWork from "../components/howiwork/_HowIWork";
 
 const Content = () => {
   return (
     <>
       <Landing />
       <AboutMe />
+      <HowIWork />
       <Project />
       <About />
     </>
