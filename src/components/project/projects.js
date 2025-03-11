@@ -71,28 +71,6 @@ const projects = () => {
 
     {
       id: 2,
-      year: 2023,
-      name: "ODINBOOK",
-      short: "Social media app",
-      tech_stack: [
-        techStack.Ruby,
-        techStack.Rails,
-        techStack.Postgres,
-        techStack.Sass,
-        techStack.Html,
-        techStack.Css,
-        techStack.Js,
-      ],
-      site_link: "https://theodinbook.fly.dev",
-      github_link: "https://theodinbook.fly.dev",
-      image: imageOdinbook,
-      thumb: thumbOdinbook,
-      description:
-        "Odinbook is a Ruby on Rails social media app that allows users to view profiles, create posts, and interact through comments, follows, and likes. It uses OmniAuth and Devise for authentication, Active Record for database interactions, and Turbo and Stimulus for dynamic UI updates. Mailer handles notifications, and SASS ensures a modern, responsive design.",
-    },
-
-    {
-      id: 3,
       year: 2024,
       name: "BATTLESHIP",
       short: "Classic board game",
@@ -106,7 +84,7 @@ const projects = () => {
     },
 
     {
-      id: 4,
+      id: 3,
       year: 2024,
       name: "POKEMON",
       short: "Memory game",
@@ -126,6 +104,27 @@ const projects = () => {
       thumb: thumbPokemon,
       description:
         "React based browser game. The game tests players memory by randomly shuffling Pokemon card and asking them to click on each one only once. The game keeps track of the player's current and best score. The project demonstrates the use of React components, state management, event handling and CSS to create an interactive and engaging user experience.",
+    },
+    {
+      id: 4,
+      year: 2023,
+      name: "ODINBOOK",
+      short: "Social media app",
+      tech_stack: [
+        techStack.Ruby,
+        techStack.Rails,
+        techStack.Postgres,
+        techStack.Sass,
+        techStack.Html,
+        techStack.Css,
+        techStack.Js,
+      ],
+      site_link: "https://theodinbook.fly.dev",
+      github_link: "https://theodinbook.fly.dev",
+      image: imageOdinbook,
+      thumb: thumbOdinbook,
+      description:
+        "Odinbook is a Ruby on Rails social media app that allows users to view profiles, create posts, and interact through comments, follows, and likes. It uses OmniAuth and Devise for authentication, Active Record for database interactions, and Turbo and Stimulus for dynamic UI updates. Mailer handles notifications, and SASS ensures a modern, responsive design.",
     },
 
     {
