@@ -18,31 +18,38 @@ const Header = ({ expanded }) => {
 const HowIWork = () => {
   const [expanded, setExpanded] = useState(1);
   const [videosLoaded, setVideosLoaded] = useState(false);
+  const [videoURLs, setVideoURLs] = useState({});
 
   useEffect(() => {
     let loadedCount = 0;
-    const preloadContainer = document.createElement("div");
-    preloadContainer.style.display = "none";
+    const videoCache = {};
 
     accordionData.forEach(({ video }) => {
-      const vid = document.createElement("video");
-      vid.src = video;
-      vid.preload = "auto";
-      vid.oncanplaythrough = () => {
-        loadedCount++;
-        if (loadedCount === accordionData.length) {
-          setVideosLoaded(true);
-        }
-      };
-      preloadContainer.appendChild(vid);
+      fetch(video, { method: "GET", cache: "force-cache" })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          videoCache[video] = url;
+          loadedCount++;
+
+          if (loadedCount === accordionData.length) {
+            setVideoURLs(videoCache);
+            setVideosLoaded(true);
+          }
+        })
+        .catch((err) => console.error("Video fetch error:", err));
     });
-
-    document.body.appendChild(preloadContainer);
-
-    return () => {
-      document.body.removeChild(preloadContainer);
-    };
   }, []);
+
+  // useEffect(() => {
+  //   if ("serviceWorker" in navigator) {
+  //     navigator.serviceWorker
+  //       .register("/service-worker.js")
+  //       .catch((err) =>
+  //         console.error("Service Worker registration failed:", err)
+  //       );
+  //   }
+  // }, []);
 
   return (
     <section id={styles.howiwork}>
@@ -55,7 +62,7 @@ const HowIWork = () => {
                 key={id}
                 id={id}
                 title={title}
-                video={video}
+                video={videoURLs[video] || video} // Use cached video URL if available
                 image={image}
                 text={text}
                 expanded={expanded}
