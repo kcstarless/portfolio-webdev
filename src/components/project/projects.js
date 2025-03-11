@@ -168,7 +168,7 @@ const projects = () => {
         techStack.Mui,
       ],
       site_link: "https://flyaway-rails-react.fly.dev/",
-      github_link: "https://github.com/kcstarless/theodinbook",
+      github_link: "https://github.com/kcstarless/flyaway",
       image: imageFlyaway,
       thumb: thumbFlyaway,
       description:
