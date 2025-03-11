@@ -10,7 +10,7 @@ import { words } from "./helper";
 import { logoTextAnimation } from "../../helpers/textAnimationHelper";
 
 const AboutMe = () => {
-  const [activeIndex, setActiveIndex] = useState(15);
+  const [activeIndex, setActiveIndex] = useState(12);
   const [rotate, setRotate] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(false); // Add state to control logo animation
   const containerRef = useRef(null);
