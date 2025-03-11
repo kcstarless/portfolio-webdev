@@ -48,24 +48,21 @@ const HowIWork = () => {
     <section id={styles.howiwork}>
       <div className={styles.container}>
         <Header expanded={expanded} />
-        {videosLoaded ? (
-          <div className={styles.main_container}>
-            {accordionData.map(({ id, title, video, image, text }) => (
-              <Accordion
-                key={id}
-                id={id}
-                title={title}
-                video={video}
-                image={image}
-                text={text}
-                expanded={expanded}
-                setExpanded={setExpanded}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className={styles.loading}>Loading...</div>
-        )}
+
+        <div className={styles.main_container}>
+          {accordionData.map(({ id, title, video, image, text }) => (
+            <Accordion
+              key={id}
+              id={id}
+              title={title}
+              video={video}
+              image={image}
+              text={text}
+              expanded={expanded}
+              setExpanded={setExpanded}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
