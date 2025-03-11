@@ -27,25 +27,24 @@ header {
     /* Shadow to the top-left */ 1px -1px 3px rgba(0, 0, 0, 0.5); /* Shadow to the top-right */
 
   .logo_text {
-    // border: solid 2px white;
     display: flex; /* Use flexbox to arrange the letters horizontally */
     flex-direction: row;
     align-items: flex-end; /* Align the letters to the bottom */
     overflow: hidden;
-    // padding: 0px 1px 0px 3px;
   }
+
   .logo_text.small {
     border: solid 3px rgb(252, 250, 250); /* Border with white color */
-    // transition: all 1s ease-in-out; /* Delay for all transitions */
     transition-delay: 5s; /* Delay the appearance of the border */
     padding: 0px 4px 0px 5px;
     border-radius: var(--border-round);
   }
+
   .letter {
     letter-spacing: 1px;
-    display: "inline-block"; // Ensure each letter is treated as a block
-    height: "1em"; // Height matches the text height
-    line-height: "1"; // Vertically center the letter within its height
+    display: inline-block; /* Ensure each letter is treated as a block */
+    height: 1em; /* Height matches the text height */
+    line-height: 1; /* Vertically center the letter within its height */
   }
 
   .logo-text:hover {
@@ -56,6 +55,7 @@ header {
   a {
     text-decoration: none;
   }
+
   a:visited {
     color: inherit;
   }
@@ -76,9 +76,10 @@ header {
     overflow: hidden;
     padding: var(--space-xxs);
   }
+
   .letter {
     letter-spacing: var(--space-xxxxxs);
-    display: "inline-block"; // Ensure each letter is treated as a block
+    display: inline-block; /* Ensure each letter is treated as a block */
   }
 
   .contact_menu {
@@ -127,9 +128,11 @@ header {
         cursor: pointer;
       }
     }
+
     h1 {
       font-size: clamp(1.5rem, 2rem, 4rem);
     }
+
     p {
       padding-bottom: 1vh;
     }
@@ -159,6 +162,7 @@ form {
     color: white;
     transition: border-color 0.3s ease-in-out;
   }
+
   input:focus {
     outline: none;
     color: var(--color-text-header);
@@ -175,12 +179,14 @@ form {
     width: 100%;
     resize: none;
   }
+
   textarea:focus {
     outline: none;
     color: var(--color-text-header);
     border: solid 2px rgb(255, 119, 119);
     color: white;
   }
+
   .input_label {
     display: flex;
     justify-content: end;
@@ -188,7 +194,6 @@ form {
   }
 
   .error {
-    // font-size: clamp(0.6rem, 0.8rem, 0.8rem);
     color: rgb(255, 119, 119);
   }
 
@@ -224,7 +229,6 @@ form {
   outline: 2px solid transparent;
   padding: 1rem 1.5rem;
   text-align: center;
-  display: flex;
   justify-content: center;
   text-transform: none;
 
@@ -232,6 +236,7 @@ form {
   -webkit-user-select: none;
   touch-action: manipulation;
   box-shadow: rgba(72, 35, 7, 0.46) 0 0 0 1px;
+
   &:active {
     background-color: #b7ab98;
     text-shadow: -1px -1px 2px rgb(255, 255, 255);
@@ -250,12 +255,13 @@ form {
 
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(100%); /* Start off-screen on the right */
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(0); /* End at its final position */
+    transform: translateX(0);
   }
 }
+
 @keyframes slideOutToRight {
   0% {
     transform: translateX(0);

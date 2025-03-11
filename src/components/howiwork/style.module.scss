@@ -112,10 +112,12 @@
     .video_text {
       position: absolute;
       padding: 2vw;
-      top: 40%;
+      top: 50%; /* Vertically center */
+      left: 50%; /* Horizontally center */
+      transform: translate(-50%, -50%);
       text-align: center;
       color: rgb(255, 255, 255);
-      font-size: clamp(1.5rem, 2vw, 3rem);
+      font-size: clamp(1.2rem, 2vw, 3rem);
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     }
   }
