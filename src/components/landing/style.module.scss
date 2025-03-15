@@ -61,22 +61,13 @@
         /* Shadow above */ -1px 2px 4px rgb(0, 0, 0); /* Light soft shadow */
 
       .line1 {
-        animation: fade-out 2s linear forwards;
-        animation-timeline: scroll();
-        animation-range-end: 500px;
       }
       .line2 {
         font-size: clamp(1.5rem, 4vw, 4rem);
         font-family: "Marcellus";
         padding-bottom: 15px;
-        animation: fade-out 2s linear forwards;
-        animation-timeline: scroll();
-        animation-range-end: 400px;
       }
       .line3 {
-        animation: fade-out 2s linear forwards;
-        animation-timeline: scroll();
-        animation-range-end: 300px;
       }
       .line4 {
         display: flex;
