@@ -1,13 +1,13 @@
 #about {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   user-select: none;
   padding-top: 35px;
   background-color: black;
-  height: 100vh;
+  margin-bottom: 1px;
 
   .project_banner {
     // white-space: nowrap;
