@@ -14,7 +14,6 @@ const Content = () => {
       <HowIWork />
 
       <Project />
-      <About />
     </>
   );
 };

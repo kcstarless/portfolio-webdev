@@ -24,4 +24,5 @@ export const words = [
   "Next.js",
   "Framer Motion",
   "Bootstrap",
+  "Figma",
 ];
