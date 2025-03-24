@@ -12,7 +12,7 @@ export const words = [
   "Ruby on Rails",
   "Mocha",
   "Full-Stack",
-  "Bootstrap",
+  "TAILWIND CSS",
   "SASS/SCSS",
   "Minitest",
   "Git",
