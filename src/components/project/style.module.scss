@@ -178,7 +178,7 @@
 
     // On hover, increase the overlay's height to cover the bottom 30%
     &:hover::after {
-      height: 18%;
+      height: 20%;
     }
 
     &:not(:hover) .project_details {
