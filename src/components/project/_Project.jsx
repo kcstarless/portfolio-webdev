@@ -61,7 +61,7 @@ const Project = () => {
             .reverse()
             .map((project, index) => (
               <div key={index} className={styles.project_card}>
-                <div className={styles.image_overlay}></div>
+                {/* <div className={styles.image_overlay}></div> */}
                 <img src={project.thumb} className={styles.project_image} />
 
                 <div className={styles.project_number}>
