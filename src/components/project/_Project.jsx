@@ -38,7 +38,7 @@ const Project = () => {
     // <div className={styles.sticky_wrapper}>
     <section id={styles.project}>
       <div className={styles.project_header}>
-        <div className={styles.project_header_title}>PROJECTS</div>
+        <h2 className={styles.project_header_title}>PROJECTS</h2>
         <div className={styles.project_header_viewall}>
           <div
             className={styles.link}
@@ -58,7 +58,6 @@ const Project = () => {
           }`}
         >
           {projects()
-            .slice(-4)
             .reverse()
             .map((project, index) => (
               <div key={index} className={styles.project_card}>
