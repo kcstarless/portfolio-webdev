@@ -91,7 +91,7 @@ const AboutMe = () => {
           className={styles.header_text}
         >
           {animateLogo ? (
-            logoTextAnimation("ABOUT ME")
+            logoTextAnimation("SKILLS")
           ) : (
             <span
               style={{
@@ -101,7 +101,7 @@ const AboutMe = () => {
                 font: "inherit",
               }}
             >
-              ABOUT ME
+              SKILLS
             </span>
           )}{" "}
           {/* Trigger animation only if the element is in view */}
