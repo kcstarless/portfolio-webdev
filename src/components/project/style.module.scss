@@ -113,7 +113,7 @@
 
   .project_card {
     position: relative;
-    width: clamp(35rem, 60vw, 80rem);
+    width: clamp(35rem, 60vw, 100rem);
     aspect-ratio: 16 / 9;
     // overflow: hidden; // Ensures the overlay doesn’t spill out
     // filter: grayscale(100%);
@@ -178,7 +178,7 @@
 
     // On hover, increase the overlay's height to cover the bottom 30%
     &:hover::after {
-      height: 21%;
+      height: 15%;
     }
 
     &:not(:hover) .project_details {

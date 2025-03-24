@@ -12,7 +12,6 @@ const Content = () => {
       <Landing />
       <AboutMe />
       <HowIWork />
-      <CurrentProject />
       <Project />
     </>
   );
