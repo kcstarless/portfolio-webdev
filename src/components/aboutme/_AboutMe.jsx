@@ -9,10 +9,16 @@ import {
 import { words } from "./helper";
 import { logoTextAnimation } from "../../helpers/textAnimationHelper";
 
+const subText = `I'm a passionate web developer who enjoys building interactive and
+user-friendly websites. With experience in both designing the visuals and making sure
+everything works smoothly behind the scenes, I aim to create seamless online experiences.
+I thrive on solving challenges and continually learning to keep up with the evolving
+digital world.`;
+
 const AboutMe = () => {
   const [activeIndex, setActiveIndex] = useState(12);
   const [rotate, setRotate] = useState(false);
-  const [animateLogo, setAnimateLogo] = useState(false); // Add state to control logo animation
+  const [animateLogo, setAnimateLogo] = useState(false);
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const wordsRef = useRef([]);
@@ -24,16 +30,15 @@ const AboutMe = () => {
     target: titleRef,
     offset: ["start end", "center center"],
   });
-
   const y = useTransform(scrollYProgress, [0, 1], ["-44vh", "0vh"]);
 
-  // Trigger logo animation when 25% of the section is visible
+  // Trigger logo animation when 50% of the section is visible
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
       if (latest >= 0.5) {
-        setAnimateLogo(true); // Trigger animation when 25% of the section is in view
+        setAnimateLogo(true);
       } else {
-        setAnimateLogo(false); // Reset animation if it's out of view
+        setAnimateLogo(false);
       }
     });
   }, [scrollYProgress]);
@@ -59,14 +64,13 @@ const AboutMe = () => {
         do {
           newIndex = Math.floor(Math.random() * words.length);
         } while (newIndex === prev);
-
         return newIndex;
       });
     }, 2500);
     return () => clearInterval(interval);
   }, [rotate]);
 
-  // Detect when title reaches center
+  // Detect when title reaches center to enable auto-rotate
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
       if (latest >= 0.95 && !rotate) {
@@ -78,20 +82,20 @@ const AboutMe = () => {
 
   return (
     <section id={styles.aboutme}>
-      {/* Separate title container */}
+      {/* Title container */}
       <motion.div
         ref={titleRef}
-        className={styles.title_container}
+        className={styles.titleContainer}
         style={{ y }}
       >
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className={styles.header_text}
+          className={styles.headerText}
         >
           {animateLogo ? (
-            logoTextAnimation("SKILLS")
+            logoTextAnimation("ABOUT ME")
           ) : (
             <span
               style={{
@@ -101,12 +105,23 @@ const AboutMe = () => {
                 font: "inherit",
               }}
             >
-              SKILLS
+              ABOUT ME
             </span>
-          )}{" "}
-          {/* Trigger animation only if the element is in view */}
+          )}
           &nbsp;
         </motion.h1>
+
+        {/* Render subtext only when animateLogo is true */}
+        {animateLogo && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={styles.subText}
+          >
+            <p>{subText}</p>
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Words list container */}
@@ -123,9 +138,7 @@ const AboutMe = () => {
                 ref={(el) => (wordsRef.current[index] = el)}
                 className={styles.word}
                 initial={{ opacity: 0.3 }}
-                animate={{
-                  opacity: index === activeIndex ? 1 : 0.3,
-                }}
+                animate={{ opacity: index === activeIndex ? 1 : 0.3 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 {word}

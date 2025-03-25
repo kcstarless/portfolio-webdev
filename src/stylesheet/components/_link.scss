@@ -1,12 +1,10 @@
 .menu_link {
   display: inline-block;
   position: relative;
-  color: white; /* Original color of the text */
+  color: rgb(56, 55, 55); /* Original color of the text */
   text-decoration: none;
   overflow: hidden; /* Hide content that goes out of bounds */
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.589),
-    /* Shadow below */ 0px -1px 1px rgba(0, 0, 0, 0.603),
-    /* Shadow above */ 0px 1px 1px rgba(0, 0, 0, 0.582);
+
   cursor: pointer;
 }
 

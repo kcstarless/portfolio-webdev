@@ -59,6 +59,7 @@ const Project = () => {
         >
           {projects()
             .reverse()
+            .slice(1)
             .map((project, index) => (
               <div key={index} className={styles.project_card}>
                 {/* <div className={styles.image_overlay}></div> */}

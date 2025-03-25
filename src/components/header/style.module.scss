@@ -12,19 +12,15 @@ header {
   padding: var(--space-m);
   align-items: center;
 
-  font-family: "Inter";
-  font-weight: 800;
+  font-family: "Bebas Neue";
+
   transition: top 1s ease-in;
 }
 
 .logo_container {
   display: flex;
   font-size: var(--font-size-l);
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5),
-    /* Shadow to the bottom-right */ -1px 1px 3px rgba(0, 0, 0, 0.5),
-    /* Shadow to the bottom-left */ -1px -1px 3px rgba(0, 0, 0, 0.5),
-    /* Shadow to the top-left */ 1px -1px 3px rgba(0, 0, 0, 0.5); /* Shadow to the top-right */
+  color: rgb(56, 55, 55);
 
   .logo_text {
     display: flex; /* Use flexbox to arrange the letters horizontally */
@@ -34,17 +30,14 @@ header {
   }
 
   .logo_text.small {
-    border: solid 3px rgb(252, 250, 250); /* Border with white color */
     transition-delay: 5s; /* Delay the appearance of the border */
-    padding: 0px 4px 0px 5px;
-    border-radius: var(--border-round);
   }
 
   .letter {
     letter-spacing: 1px;
     display: inline-block; /* Ensure each letter is treated as a block */
     height: 1em; /* Height matches the text height */
-    line-height: 1; /* Vertically center the letter within its height */
+    // line-height: 1; /* Vertically center the letter within its height */
   }
 
   .logo-text:hover {
@@ -67,7 +60,7 @@ header {
   justify-content: center;
   gap: var(--space-xl);
   position: relative;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-l);
 
   .menu_item {
     display: flex; /* Use flexbox to arrange the letters horizontally */
