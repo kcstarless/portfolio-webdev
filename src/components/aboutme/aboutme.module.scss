@@ -38,11 +38,13 @@ h1 {
   .subText {
     position: absolute;
     top: 100%;
-    color: var(--color-text-body);
+    // color: var(--color-text-body);
+    color: gray;
     width: 30vw;
     text-align: right;
     padding-right: 1vw;
     font-size: var(--font-size-l);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
