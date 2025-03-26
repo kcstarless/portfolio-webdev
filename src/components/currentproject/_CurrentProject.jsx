@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import projects from "../project/projects";
+
 import { useState } from "react";
 
 const Header = () => {
@@ -36,33 +37,41 @@ const Overview = ({ project }) => {
       </div>
 
       <div className={styles.item}>
+        <span className={styles.label}>Type</span>
+        <span className={styles.value}>{project.type}</span>
+      </div>
+
+      <div className={styles.item}>
         <span className={styles.label}>Tech Stack</span>
         <span className={styles.icon}>
           {" "}
           {project.tech_stack.map((tech, index) => (
-            <span key={index}>
-              <img
-                src={tech.icon}
-                alt={tech.name}
-                className={styles.techIcon}
-              />
+            <span key={index} className={styles.techIcon}>
+              <img src={tech.icon} alt={tech.name} class={styles.techIcon} />
             </span>
           ))}
         </span>
       </div>
+    </div>
+  );
+};
 
+const Details = ({ project }) => {
+  return (
+    <div className={styles.details}>
       <div className={styles.item}>
-        <span className={styles.label}>&nbsp;</span>
-        <span className={styles.details}>
-          <paragraph>
-            {" "}
-            {project.overview
-              .split("\n")
-              .map((line, index) =>
-                line.trim() ? <p key={index}>{line}</p> : <br key={index} />
-              )}
-          </paragraph>
-        </span>
+        <span className={styles.details}>{project.details}.</span>
+      </div>
+    </div>
+  );
+};
+
+const Design = ({ project }) => {
+  return (
+    <div className={styles.design}>
+      <div className={styles.item}>
+        {/* <span className={styles.details}>{project.design}.</span> */}
+        <img src={project.images[0]} alt="Design" className={styles.image} />
       </div>
     </div>
   );
@@ -81,8 +90,18 @@ const Project = () => {
             <Overview project={project} />
           </div>
         );
+      case "Details":
+        return (
+          <div className={styles.projectDetails}>
+            <Details project={project} />
+          </div>
+        );
       case "Design":
-        return <div className={styles.projectDetails}>{project.design}</div>;
+        return (
+          <div className={styles.projectDetails}>
+            <Design project={project} />
+          </div>
+        );
       case "Challenges":
         return (
           <div className={styles.projectDetails}>{project.challenges}</div>
@@ -101,18 +120,23 @@ const Project = () => {
   return (
     <div className={styles.body}>
       <div className={styles.menubar}>
-        {["Overview", "Design", "Challenges", "Key Features", "Outcome"].map(
-          (section) => (
-            <div
-              key={section}
-              className={styles.menuItem}
-              aria-expanded={activeSection === section}
-              onClick={() => setActiveSection(section)}
-            >
-              {section}
-            </div>
-          )
-        )}
+        {[
+          "Overview",
+          "Details",
+          "Design",
+          "Challenges",
+          "Key Features",
+          "Outcome",
+        ].map((section) => (
+          <div
+            key={section}
+            className={styles.menuItem}
+            aria-expanded={activeSection === section}
+            onClick={() => setActiveSection(section)}
+          >
+            {section}
+          </div>
+        ))}
       </div>
       <div className={styles.content}>{renderContent()}</div>
     </div>
@@ -123,8 +147,10 @@ const CurrentProject = () => {
   return (
     <section id={styles.currentProject}>
       <div className={styles.mainContainer}>
-        <Header />
-        <Project />
+        <div className={styles.container}>
+          <Header />
+          <Project />
+        </div>
       </div>
     </section>
   );

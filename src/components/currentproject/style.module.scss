@@ -6,67 +6,65 @@
 
 .mainContainer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f5f5f3;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  padding-top: 3vw;
   font-family: "Bebas Neue";
   // padding-bottom: 1vw;
-  // border: solid 1px black;
-}
+  overflow-y: auto;
 
-.header {
-  justify-items: start;
-  color: rgb(56, 55, 55);
-  font-weight: bold;
-  position: relative;
-  width: clamp(500px, 55vw, 1200px);
-
-  .title {
-    position: absolute;
-    left: 1px;
-    top: -5px;
-    font-size: var(--font-size-l);
-    color: gray;
-  }
-  .projectTitle {
-    font-size: var(--font-size-xxl);
-  }
-}
-
-.body {
-  // border: solid 1px black;
-  width: clamp(500px, 55vw, 1200px);
-
-  .menubar {
-    display: flex;
-    // justify-self: center;
+  .container {
+    // width: clamp(20rem, 90vw, 100rem);
+    height: 90vh;
     // border: solid 1px black;
-    font-size: var(--font-size-l);
-    gap: 1vw;
-    .menuItem[aria-expanded="false"] {
-      color: rgb(184, 184, 184);
+  }
+  .header {
+    color: rgb(56, 55, 55);
+    font-weight: bold;
+    position: relative;
+    width: clamp(500px, 55vw, 1200px);
+
+    .title {
+      position: absolute;
+      left: 1px;
+      top: -8px;
+      font-size: var(--font-size-l);
+      color: gray;
     }
-    .menuItem[aria-expanded="true"] {
+    .projectTitle {
+      font-size: var(--font-size-xxl);
     }
   }
-
-  .content {
-    padding-top: 1vw;
-    // justify-self: center;
+  .body {
     // border: solid 1px black;
-    .projectDetails {
+    width: clamp(500px, 55vw, 1000px);
+
+    .menubar {
+      display: flex;
+      // justify-self: center;
       // border: solid 1px black;
-      width: clamp(500px, 55vw, 1200px);
+      font-size: var(--font-size-l);
+      gap: 1vw;
+      .menuItem[aria-expanded="false"] {
+        color: rgb(184, 184, 184);
+      }
+      .menuItem[aria-expanded="true"] {
+      }
+    }
+
+    .content {
+      padding-top: 1vw;
+      // justify-self: center;
+      // border: solid 1px black;
+      .projectDetails {
+        // border: solid 1px black;
+        // width: clamp(500px, 55vw, 1200px);
+      }
     }
   }
-}
-
-.overview {
-  // border: solid 1px;
 }
 
 .item {
@@ -74,25 +72,33 @@
   flex-direction: column;
   justify-content: center;
   line-height: 1;
+  color: var(--color-text-muted);
   // border: solid 1px black;
   .label {
-    color: gray;
+    color: var(--color-text-body);
     font-size: var(--font-size-m);
   }
   .value {
     font-size: var(--font-size-xl);
   }
   .details {
-    font-size: 1.5rem;
-    font-family: "Roboto";
+    font-size: var(--font-size-m);
+    font-family: "Poppins";
     line-height: 1.2;
-    color: gray;
-    // color: var(--color-text-header);
+    color: var(--color-text-muted);
+    white-space: pre-line;
   }
   .techIcon {
     width: clamp(1.5rem, 3vw, 5rem);
     padding-right: 0.5vw;
-    padding-top: 0.3vw;
-    filter: sepia(70%) grayscale(10%);
+    line-height: 1.2;
+    filter: grayscale(20%);
   }
+  .image {
+    // height: clamp(10rem, 20vw, 30rem);
+    object-fit: contain;
+  }
+}
+
+.overview {
 }
