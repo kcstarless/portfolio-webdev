@@ -60,6 +60,7 @@
     .content {
       padding-top: 2vh;
       padding-bottom: 2vh;
+      height: 500px;
       border-bottom: solid 2px rgb(184, 184, 184);
       // justify-self: center;
       // border: solid 1px black;
@@ -89,8 +90,8 @@
   .details {
     font-size: clamp(1rem, 2vw, 1.3rem);
     font-family: "Poppins";
-    letter-spacing: 0.03em;
-    color: gray;
+    letter-spacing: 0.05em;
+    color: rgb(100, 100, 100);
     font-size: clamp(0.6rem, 1.5vw, 1.3rem);
     white-space: pre-line;
   }
