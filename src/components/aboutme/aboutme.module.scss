@@ -43,7 +43,7 @@ h1 {
     width: 30vw;
     text-align: right;
     padding-right: 1vw;
-    font-size: var(--font-size-l);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }

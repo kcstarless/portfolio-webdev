@@ -106,7 +106,7 @@ const Project = () => {
         return (
           <div className={styles.projectDetails}>{project.challenges}</div>
         );
-      case "Key Features":
+      case "Features":
         return (
           <div className={styles.projectDetails}>{project.keyFeatures}</div>
         );
@@ -125,7 +125,7 @@ const Project = () => {
           "Details",
           "Design",
           "Challenges",
-          "Key Features",
+          "Features",
           "Outcome",
         ].map((section) => (
           <div

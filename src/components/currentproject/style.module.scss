@@ -17,36 +17,37 @@
   overflow-y: auto;
 
   .container {
-    // width: clamp(20rem, 90vw, 100rem);
-    height: 90vh;
     // border: solid 1px black;
+    width: clamp(600px, 55vw, 1200px);
+    height: 100%;
+    padding-top: 5vh;
+    // padding-bottom: 5vh;
   }
   .header {
+    // justify-self: center;
     color: rgb(56, 55, 55);
-    font-weight: bold;
+    // font-weight: bold;
     position: relative;
-    width: clamp(500px, 55vw, 1200px);
-
     .title {
       position: absolute;
       left: 1px;
-      top: -8px;
-      font-size: var(--font-size-l);
+      top: -10px;
+      font-size: clamp(1rem, 2vw, 2rem);
       color: gray;
     }
     .projectTitle {
-      font-size: var(--font-size-xxl);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: bold;
     }
   }
   .body {
     // border: solid 1px black;
-    width: clamp(500px, 55vw, 1000px);
-
+    // justify-self: center;
     .menubar {
       display: flex;
       // justify-self: center;
-      // border: solid 1px black;
       font-size: var(--font-size-l);
+      border-bottom: solid 2px rgb(184, 184, 184);
       gap: 1vw;
       .menuItem[aria-expanded="false"] {
         color: rgb(184, 184, 184);
@@ -56,7 +57,9 @@
     }
 
     .content {
-      padding-top: 1vw;
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+      border-bottom: solid 2px rgb(184, 184, 184);
       // justify-self: center;
       // border: solid 1px black;
       .projectDetails {
@@ -70,19 +73,20 @@
 .item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   line-height: 1;
   color: var(--color-text-muted);
+  width: 100%;
   // border: solid 1px black;
   .label {
     color: var(--color-text-body);
     font-size: var(--font-size-m);
   }
   .value {
-    font-size: var(--font-size-xl);
+    font-size: clamp(1.5rem, 3vw, 5rem);
   }
   .details {
-    font-size: var(--font-size-m);
+    font-size: clamp(1rem, 2vw, 1.3rem);
     font-family: "Poppins";
     line-height: 1.2;
     color: var(--color-text-muted);
@@ -95,10 +99,12 @@
     filter: grayscale(20%);
   }
   .image {
-    // height: clamp(10rem, 20vw, 30rem);
-    object-fit: contain;
+    width: auto;
+    height: auto;
+    // object-fit: contain;
   }
 }
 
 .overview {
+  background-image: "kcm.png";
 }
