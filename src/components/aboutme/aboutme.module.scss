@@ -38,12 +38,16 @@ h1 {
   .subText {
     position: absolute;
     top: 100%;
+
     // color: var(--color-text-body);
-    color: gray;
+
     width: 30vw;
     text-align: right;
+    font-family: "Poppins";
     padding-right: 1vw;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    letter-spacing: 0.03em;
+    color: gray;
+    font-size: clamp(0.6rem, 1.5vw, 1.3rem);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
