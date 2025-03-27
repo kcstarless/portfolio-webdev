@@ -19,7 +19,7 @@ export const words = [
   "Full-Stack",
   "Turbo",
   "Jest",
-  "Rspect",
+  "Rspec",
   "Redux",
   "Next.js",
   "Framer Motion",
