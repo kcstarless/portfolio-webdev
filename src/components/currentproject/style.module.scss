@@ -158,3 +158,40 @@
     }
   }
 }
+
+.challenges {
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+  gap: 1vw;
+
+  .challengesSubmenu {
+    border-right: solid 1px rgb(184, 184, 184);
+    .challengesSubmenuTitle {
+      color: rgb(184, 184, 184);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      &[aria-expanded="true"] {
+        color: var(--color-text-header);
+      }
+    }
+
+    // width: 20%;
+  }
+
+  .challengesDetails {
+    // width: 80%;
+    font-family: "Poppins";
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    color: rgb(100, 100, 100);
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    white-space: pre-line;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 1vw;
+    .imageGrid {
+      width: 100%;
+    }
+  }
+}

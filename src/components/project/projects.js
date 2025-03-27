@@ -200,7 +200,7 @@ const projects = () => {
       challenges: "This is the project challenges",
       keyFeatures: "This is the project key features",
       outcome: "This is the project outcome",
-      duration: "20 hours in develpment",
+      duration: "20%",
       tech_stack: [
         techStack.Ruby,
         techStack.Rails,
