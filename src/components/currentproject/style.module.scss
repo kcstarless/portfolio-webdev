@@ -8,47 +8,55 @@
 .mainContainer {
   width: 100%;
   height: 100%;
-  // background-color: #f5f5f3;
+  padding-top: 5vh;
+  // border: solid 1px black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  // justify-content: center;
   font-family: "Bebas Neue";
   // padding-bottom: 1vw;
-  overflow-y: auto;
 
-  .container {
-    // border: solid 1px black;
-    width: clamp(370px, 55vw, 1200px);
-    height: 100%;
-    padding-top: 5vh;
-    // padding-bottom: 5vh;
-  }
   .header {
-    // justify-self: center;
     color: rgb(56, 55, 55);
-    // font-weight: bold;
-    position: relative;
+    // border: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: clamp(1vh, 5vh, 5vh);
+
     .title {
       position: absolute;
       left: 1px;
       top: -10px;
       font-size: clamp(1rem, 2vw, 2rem);
       color: gray;
+      font-weight: lighter;
     }
     .projectTitle {
       font-size: clamp(3rem, 6vw, 6rem);
       font-weight: bold;
+      position: relative;
     }
   }
+
   .body {
-    // border: solid 1px black;
-    // justify-self: center;
+    // border: solid 1px blue;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     .menubar {
+      width: 70%;
       display: flex;
-      // justify-self: center;
+      justify-content: center;
       font-size: var(--font-size-l);
-      border-bottom: solid 2px rgb(184, 184, 184);
+      border-bottom: solid 1px rgb(184, 184, 184);
       gap: 1vw;
       .menuItem[aria-expanded="false"] {
         color: rgb(184, 184, 184);
@@ -58,12 +66,12 @@
     }
 
     .content {
+      width: 70%;
+      height: 100%;
       padding-top: 2vh;
       padding-bottom: 2vh;
-      height: 500px;
-      border-bottom: solid 2px rgb(184, 184, 184);
-      // justify-self: center;
-      // border: solid 1px black;
+      border-bottom: solid 1px rgb(184, 184, 184);
+
       .projectDetails {
         // border: solid 1px black;
         // width: clamp(500px, 55vw, 1200px);
@@ -102,12 +110,50 @@
     filter: grayscale(20%);
   }
   .image {
-    width: auto;
+    align-self: center;
+    width: clamp(20rem, 60vw, 100rem);
     height: auto;
-    // object-fit: contain;
+    object-fit: contain;
   }
 }
 
 .overview {
-  background-image: "kcm.png";
+  display: flex;
+  justify-content: space-around;
+  gap: 1vw;
+  position: relative;
+  .imageGrid {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: solid 1px black;
+    gap: 1vw;
+
+    .video {
+      width: 100%;
+      // height: 100%;
+      border-radius: 8px;
+      filter: grayscale(100%);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .video:hover {
+      width: 100%; /* Full viewport width */
+      height: 100%; /* Full viewport height */
+      position: absolute; /* Position over other content */
+      top: 0;
+      left: 0;
+      z-index: 10; /* Ensure it's above other elements */
+      transform: scale(1.5);
+      filter: grayscale(0%);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 1vw;
+    .imageGrid {
+      width: 100%;
+    }
+  }
 }
