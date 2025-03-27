@@ -16,7 +16,7 @@ I thrive on solving challenges and continually learning to keep up with the evol
 digital world.`;
 
 const AboutMe = () => {
-  const [activeIndex, setActiveIndex] = useState(12);
+  const [activeIndex, setActiveIndex] = useState(17);
   const [rotate, setRotate] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(false);
   const containerRef = useRef(null);
