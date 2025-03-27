@@ -242,14 +242,7 @@ const Project = () => {
     }
   };
 
-  const submenu = [
-    "Overview",
-    "Details",
-    "Design",
-    "Challenges",
-    "Features",
-    "Outcome",
-  ];
+  const submenu = ["Overview", "Details", "Design", "Challenges", "Features"];
 
   return (
     <div className={styles.body}>
