@@ -143,12 +143,11 @@ const Challenges = ({ project }) => {
     return (
       <div className={styles.challengesDetails}>
         ​Integrating Turbo Frames within accordion panels can be challenging due
-        to the need for dynamic content loading and maintaining a clean
-        codebase. Initially, I attempted to house all content within a single
-        Turbo Frame inside each accordion panel. This approach required
-        extensive use of Stimulus controllers and CSS to manage content
-        injection and removal, leading to increased code complexity and reduced
-        readability.​
+        to the need for dynamic content loading. Initially, I attempted to house
+        all content within a single Turbo Frame inside each accordion panel.
+        This approach required extensive use of Stimulus controllers and CSS to
+        manage content injection and removal, leading to increased code
+        complexity and reduced readability.​
         <br />
         <br />
         To address these issues, I transitioned to assigning a unique Turbo
@@ -191,7 +190,7 @@ const Challenges = ({ project }) => {
           aria-expanded={activeSection === 2}
           onClick={() => setActiveSection(2)}
         >
-          2. Turbo Content Accordion
+          2. Turbo Content
         </div>
       </div>
 

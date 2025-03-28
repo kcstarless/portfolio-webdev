@@ -70,7 +70,7 @@
       height: 100%;
       padding-top: 2vh;
       padding-bottom: 2vh;
-      border-bottom: solid 1px rgb(184, 184, 184);
+      // border-bottom: solid 1px rgb(184, 184, 184);
 
       .projectDetails {
         // border: solid 1px black;
@@ -96,12 +96,11 @@
     font-size: clamp(1.5rem, 3vw, 5rem);
   }
   .details {
-    font-size: clamp(1rem, 2vw, 1.3rem);
     font-family: "Poppins";
     letter-spacing: 0.05em;
     line-height: 1.5;
     color: rgb(100, 100, 100);
-    font-size: clamp(0.6rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.6rem, 1.5vw, 1.2rem);
     white-space: pre-line;
   }
   .techIcon {
@@ -135,17 +134,18 @@
       width: 100%;
       // height: 100%;
       border-radius: 8px;
-      filter: grayscale(100%);
+      // filter: grayscale(100%);
       transition: transform 0.5s ease, filter 0.5s ease;
     }
     .video:hover {
       width: 100%; /* Full viewport width */
-      height: 100%; /* Full viewport height */
+      // height: inherit; /* Full viewport height */
+      height: auto;
       position: absolute; /* Position over other content */
       top: 0;
       left: 0;
       z-index: 10; /* Ensure it's above other elements */
-      transform: scale(1.5);
+      transform: scale(1);
       filter: grayscale(0%);
     }
   }
@@ -168,7 +168,7 @@
     border-right: solid 1px rgb(184, 184, 184);
     .challengesSubmenuTitle {
       color: rgb(184, 184, 184);
-      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-size: clamp(1rem, 2vw, 1.5rem);
       &[aria-expanded="true"] {
         color: var(--color-text-header);
       }
@@ -183,15 +183,18 @@
     letter-spacing: 0.05em;
     line-height: 1.5;
     color: rgb(100, 100, 100);
-    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    font-size: clamp(0.6rem, 1.5vw, 1.2rem);
     white-space: pre-line;
   }
 
   @media screen and (max-width: 768px) {
+    display: flex;
     flex-direction: column;
     gap: 1vw;
-    .imageGrid {
-      width: 100%;
+    .challengesSubmenu {
+      display: flex;
+      gap: 1vw;
+      border: none;
     }
   }
 }
