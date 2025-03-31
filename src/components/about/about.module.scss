@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem; /* Add padding to ensure proper spacing */
-  min-height: 100vh; /* Ensure the section takes up the full viewport height */
-  box-sizing: border-box; /* Include padding in height calculations */
-  overflow: hidden; /* Prevent content overflow */
+  padding: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
 }

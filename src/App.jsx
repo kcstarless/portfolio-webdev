@@ -5,7 +5,7 @@ import { useEffect, useCallback, useState } from "react";
 import { LandingCanvas } from "./components/landing/LandingCanvas";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true); // Global loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [headerClass, setHeaderClass] = useState(""); // State to manage header class
 
   // Reset window scroll position on page reload
@@ -20,28 +20,14 @@ function App() {
     };
 
     const checkIfLoaded = () => {
-      const videos = document.querySelectorAll("video");
-      const videoPromises = Array.from(videos).map(
-        (video) =>
-          new Promise((resolve) => {
-            if (video.readyState >= 4) {
-              // Video is already buffered
-              resolve();
-            } else {
-              // Wait for the video to buffer enough to play through
-              video.addEventListener("canplaythrough", resolve, { once: true });
-            }
-          })
-      );
-
-      Promise.all(videoPromises).then(() => {
-        setTimeout(() => setIsLoading(false), 500); // Add a slight delay for smooth transition
-      });
+      if (document.readyState === "complete") {
+        setIsLoading(false);
+      }
     };
 
     // Check document.readyState and set event listener for 'load' event
     if (document.readyState === "complete") {
-      checkIfLoaded();
+      setIsLoading(false);
     } else {
       window.addEventListener("load", checkIfLoaded);
     }
@@ -51,34 +37,8 @@ function App() {
     };
   }, [resetWindowScrollPosition]);
 
-  // Lock scrolling while loading
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isLoading]);
-
   if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <div className="loading-animation">
-          <div className="spinner"></div>
-          <p>Loading...</p>
-        </div>
-      </div>
-    );
+    return <div>Loading...</div>; // Replace with a spinner or other loading indicator
   }
 
   return (
