@@ -8,26 +8,21 @@ import { OrbitControls } from "@react-three/drei";
 const Blob = ({ position, size, clickCounter }) => {
   const meshRef = useRef();
 
-  // Create uniforms once.
-  // We don't include clickCounter in the dependency array
-  // because we will update its value every frame.
   const uniforms = useMemo(
     () => ({
       u_time: { value: 0.0 },
       u_speed: { value: 0.5 },
       u_intensity: { value: 1 },
       u_colorSpeed: { value: 1 },
-      u_clickCounter: { value: clickCounter }, // initial value
+      u_clickCounter: { value: clickCounter },
     }),
     []
   );
 
-  // Update uniforms each frame.
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.material.uniforms.u_time.value =
         state.clock.getElapsedTime();
-      // Update the click counter uniform with the latest value
       meshRef.current.material.uniforms.u_clickCounter.value = clickCounter;
     }
   });
@@ -50,9 +45,9 @@ const Scene = ({ clickCounter }) => {
   const [blobSize, setBlobSize] = useState(() => getBlobSize());
 
   function getBlobSize() {
-    if (window.innerWidth < 431) return 0.3; // Small screens
-    if (window.innerWidth < 1024) return 0.6; // Tablets
-    return 0.9; // Desktops
+    if (window.innerWidth < 431) return 0.3;
+    if (window.innerWidth < 1024) return 0.6;
+    return 0.9;
   }
   useEffect(() => {
     const handleResize = () => {

@@ -21,64 +21,32 @@ void main() {
 }
 `;
 
-// Fragment Shader (Modified to display 4 colors at once)
+// Fragment Shader
 export const fragmentShader = `
 uniform float u_time;
 uniform float u_colorSpeed;
 varying vec3 vNormal;
 varying vec3 vPosition;
-uniform float u_clickCounter;  // Click counter as a float
 
 void main() {
-    // Define base colors: Green → Yellow → Orange → Red → Magenta → Blue
-    const vec3 colors[6] = vec3[6](
-        vec3(0.0, 0.6, 0.0),   // Green
-        vec3(0.7, 0.7, 0.0),   // Yellow
-        vec3(1.0, 0.647, 0.0), // Orange
-        vec3(1.0, 0.0, 0.0),   // Red
-        vec3(1.0, 0.0, 1.0),   // Magenta
-        vec3(0.0, 0.0, 1.0)    // Blue
-    );
+    // Define a palette of colors
+    vec3 colors[6];
+    colors[0] = vec3(1.0, 0.0, 0.0); // Red
+    colors[1] = vec3(0.0, 1.0, 0.0); // Green
+    colors[2] = vec3(0.0, 0.0, 1.0); // Blue
+    colors[3] = vec3(1.0, 1.0, 0.0); // Yellow
+    colors[4] = vec3(1.0, 0.0, 1.0); // Magenta
+    colors[5] = vec3(0.0, 1.0, 1.0); // Cyan
 
-    // Define slightly brighter colors for the final click
-    const vec3 brightColors[6] = vec3[6](
-        vec3(0.2, 0.85, 0.2),   // Slightly brighter Green
-        vec3(0.85, 0.85, 0.2),  // Slightly brighter Yellow
-        vec3(1.0, 0.75, 0.3),   // Slightly brighter Orange
-        vec3(1.0, 0.2, 0.2),    // Slightly brighter Red
-        vec3(1.0, 0.2, 1.0),    // Slightly brighter Magenta
-        vec3(0.2, 0.2, 1.0)     // Slightly brighter Blue
-    );
-
-    // Limit u_clickCounter to max 5
-    float maxClicks = 5.0;
-    float clickStage = clamp(floor(u_clickCounter), 0.0, maxClicks);
-
-    // If no clicks, entire surface is green
-    if (clickStage == 0.0) {
-        gl_FragColor = vec4(colors[0], 1.0);
-        return;
-    }
-
-    // Number of sections based on click count (changed from 24 to 12)
-    float totalRegions = (clickStage < maxClicks) ? clickStage + 1.0 : 12.0;
-
-    // Get azimuth angle (phi) from x and z coordinates
+    // Calculate the azimuthal angle (phi) based on the x and z coordinates
     float phi = atan(vPosition.z, vPosition.x) + 3.14159265; // Convert -PI to PI → 0 to 2*PI
 
-    // Calculate region width
-    float regionWidth = 6.2831853 / totalRegions; // 2*PI / totalRegions
+    // Divide the sphere into 6 regions based on the angle
+    float region = floor(phi / (6.2831853 / 6.0)); // 2*PI divided by 6 regions
 
-    // Determine region index
-    int regionIndex = int(floor(phi / regionWidth));
-    if (clickStage == maxClicks) {
-        regionIndex = regionIndex % 6; // Repeat 6 colors in 12 sections
-    }
+    // Assign a color based on the region
+    vec3 color = colors[int(mod(region, 6.0))];
 
-    // Use slightly brighter colors on final click
-    vec3 finalColor = (clickStage == maxClicks) ? brightColors[regionIndex] : colors[regionIndex];
-
-    gl_FragColor = vec4(finalColor, 1.0);
+    gl_FragColor = vec4(color, 1.0);
 }
-
 `;

@@ -72,57 +72,18 @@ const AboutMe = () => {
 
   // Detect when title reaches center to enable auto-rotate
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      if (latest >= 0.95 && !rotate) {
-        setRotate(true);
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress, rotate]);
+    setRotate(true);
+  }, [rotate]);
 
   return (
     <section id={styles.aboutme}>
       {/* Title container */}
-      <motion.div
-        ref={titleRef}
-        className={styles.titleContainer}
-        style={{ y }}
-      >
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className={styles.headerText}
-        >
-          {animateLogo ? (
-            logoTextAnimation("ABOUT ME")
-          ) : (
-            <span
-              style={{
-                visibility: "hidden",
-                display: "inline-block",
-                width: "auto",
-                font: "inherit",
-              }}
-            >
-              ABOUT ME
-            </span>
-          )}
-          &nbsp;
-        </motion.h1>
-
-        {/* Render subtext only when animateLogo is true */}
-        {animateLogo && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={styles.subText}
-          >
-            <p>{subText}</p>
-          </motion.div>
-        )}
-      </motion.div>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.headerText}>{logoTextAnimation("ABOUT ME")}</h1>
+        <div className={styles.subText}>
+          <p>{subText}</p>
+        </div>
+      </div>
 
       {/* Words list container */}
       <div className={styles.words_container} ref={containerRef}>
@@ -146,6 +107,18 @@ const AboutMe = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div className={styles.scrollDown}>
+        <motion.div
+          className={styles.arrow}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          ↓
+        </motion.div>
+        <p>Scroll Down</p>
       </div>
     </section>
   );

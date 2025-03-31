@@ -3,17 +3,33 @@
   top: 0;
   display: flex;
   flex-direction: row;
-  // background-color: #b1d38b;
-  background-color: white;
   color: black;
   font-family: "Bebas Neue";
   overflow: hidden;
   z-index: 2;
   height: 100vh;
+  gap: 1vw;
 
-  // background-image: url("/noise.png");
-  // backdrop-filter: blur(200px); /* Creates a blur effect behind the veil */
-  // background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(200px); /* Creates a blur effect behind the veil */
+  background-color: rgba(255, 255, 255, 0.5);
+
+  .scrollDown {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins";
+    font-size: clamp(0.8rem, 1vw, 1.2rem);
+    color: gray;
+    text-align: center;
+
+    .arrow {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+  }
 }
 
 .container {
@@ -42,9 +58,6 @@ h1 {
   .subText {
     position: absolute;
     top: 100%;
-
-    // color: var(--color-text-body);
-
     width: 30vw;
     text-align: right;
     font-family: "Poppins";
