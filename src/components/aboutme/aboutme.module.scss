@@ -29,6 +29,11 @@
       font-size: clamp(1.5rem, 2vw, 2rem);
       margin-bottom: 0.5rem;
     }
+
+    .loading {
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+      color: gray;
+    }
   }
 }
 

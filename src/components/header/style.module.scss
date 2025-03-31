@@ -3,6 +3,7 @@
   top: 0;
   height: 0; /* Makes wrapper invisible for layout purposes */
   z-index: 900; /* Same as header's original z-index */
+  transition: color 0.3s ease-in-out;
 }
 
 header {
@@ -15,6 +16,10 @@ header {
   font-family: "Bebas Neue";
 
   transition: top 1s ease-in;
+}
+
+.header-white {
+  color: white;
 }
 
 .logo_container {

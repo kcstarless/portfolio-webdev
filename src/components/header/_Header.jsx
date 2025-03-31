@@ -8,7 +8,7 @@ import {
 } from "../../helpers/textAnimationHelper";
 import styles from "./style.module.scss";
 
-const Header = () => {
+const Header = ({ headerClass }) => {
   const [showHeader, setShowHeader] = useState(false);
   const { scrollY } = useScroll();
 
@@ -26,7 +26,7 @@ const Header = () => {
   }
 
   return (
-    <div className={styles.sticky_wrapper}>
+    <div className={`${styles.sticky_wrapper} ${headerClass}`}>
       <motion.header className={styles.header}>
         <div className={styles.logo_container}>
           <div className={styles.logo_text}>

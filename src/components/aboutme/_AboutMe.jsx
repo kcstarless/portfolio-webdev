@@ -19,11 +19,32 @@ const AboutMe = () => {
   const [activeIndex, setActiveIndex] = useState(17);
   const [rotate, setRotate] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State to track loading
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const wordsRef = useRef([]);
   const countRef = useRef(0);
   const isLocked = useRef(false);
+
+  // Lock scrolling while loading
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
+
+  // Simulate loading completion
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Set loading to false after 3 seconds
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Scroll animation for title
   const { scrollYProgress } = useScroll({
@@ -111,14 +132,26 @@ const AboutMe = () => {
 
       {/* Scroll Down Indicator */}
       <div className={styles.scrollDown}>
-        <motion.div
-          className={styles.arrow}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          ↓
-        </motion.div>
-        <p>Scroll Down</p>
+        {isLoading ? (
+          <motion.div
+            className={styles.loading}
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          >
+            Loading...
+          </motion.div>
+        ) : (
+          <>
+            <motion.div
+              className={styles.arrow}
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              ↓
+            </motion.div>
+            <p>Scroll Down</p>
+          </>
+        )}
       </div>
     </section>
   );

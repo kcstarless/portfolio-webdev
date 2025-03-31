@@ -5,7 +5,8 @@ import { useEffect, useCallback, useState } from "react";
 import { LandingCanvas } from "./components/landing/LandingCanvas";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Global loading state
+  const [headerClass, setHeaderClass] = useState(""); // State to manage header class
 
   // Reset window scroll position on page reload
   const resetWindowScrollPosition = useCallback(
@@ -20,13 +21,13 @@ function App() {
 
     const checkIfLoaded = () => {
       if (document.readyState === "complete") {
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 2000); // Simulate loading delay
       }
     };
 
     // Check document.readyState and set event listener for 'load' event
     if (document.readyState === "complete") {
-      setIsLoading(false);
+      setTimeout(() => setIsLoading(false), 2000); // Simulate loading delay
     } else {
       window.addEventListener("load", checkIfLoaded);
     }
@@ -36,14 +37,39 @@ function App() {
     };
   }, [resetWindowScrollPosition]);
 
+  // Lock scrolling while loading
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
+
   if (isLoading) {
-    return <div>Loading...</div>; // Replace with a spinner or other loading indicator
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <div className="loading-animation">
+          <div className="spinner"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
       <div style={{ position: "relative" }}>
-        {/* Ensure LandingCanvas is fixed and acts as a global background */}
         <div
           style={{
             position: "fixed",
@@ -57,8 +83,8 @@ function App() {
           <LandingCanvas clickCounter={0} />
         </div>
         <SmoothScroll>
-          <Header />
-          <Content />
+          <Header headerClass={headerClass} />
+          <Content setHeaderClass={setHeaderClass} />
         </SmoothScroll>
       </div>
     </>
