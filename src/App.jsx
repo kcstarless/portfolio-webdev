@@ -20,14 +20,28 @@ function App() {
     };
 
     const checkIfLoaded = () => {
-      if (document.readyState === "complete") {
-        setTimeout(() => setIsLoading(false), 2000); // Simulate loading delay
-      }
+      const videos = document.querySelectorAll("video");
+      const videoPromises = Array.from(videos).map(
+        (video) =>
+          new Promise((resolve) => {
+            if (video.readyState >= 3) {
+              // Video is already loaded
+              resolve();
+            } else {
+              // Wait for the video to load
+              video.addEventListener("loadeddata", resolve, { once: true });
+            }
+          })
+      );
+
+      Promise.all(videoPromises).then(() => {
+        setTimeout(() => setIsLoading(false), 500); // Add a slight delay for smooth transition
+      });
     };
 
     // Check document.readyState and set event listener for 'load' event
     if (document.readyState === "complete") {
-      setTimeout(() => setIsLoading(false), 2000); // Simulate loading delay
+      checkIfLoaded();
     } else {
       window.addEventListener("load", checkIfLoaded);
     }
