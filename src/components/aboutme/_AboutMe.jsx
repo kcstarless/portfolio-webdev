@@ -15,36 +15,13 @@ everything works smoothly behind the scenes, I aim to create seamless online exp
 I thrive on solving challenges and continually learning to keep up with the evolving
 digital world.`;
 
-const AboutMe = () => {
+const AboutMe = ({ isLoading }) => {
   const [activeIndex, setActiveIndex] = useState(17);
   const [rotate, setRotate] = useState(false);
   const [animateLogo, setAnimateLogo] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // State to track loading
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const wordsRef = useRef([]);
-  const countRef = useRef(0);
-  const isLocked = useRef(false);
-
-  // Lock scrolling while loading
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isLoading]);
-
-  // Simulate loading completion
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false); // Set loading to false after 3 seconds
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Scroll animation for title
   const { scrollYProgress } = useScroll({
@@ -138,7 +115,8 @@ const AboutMe = () => {
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            Loading...
+            <div className={styles.spinner}></div>
+            <p>Loading...</p>
           </motion.div>
         ) : (
           <>
