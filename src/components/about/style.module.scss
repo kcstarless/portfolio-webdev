@@ -6,7 +6,7 @@
   flex-direction: column;
   user-select: none;
   padding-top: 35px;
-  background-color: black;
+  background-color: white;
   margin-bottom: 1px;
 
   .project_banner {
@@ -60,7 +60,7 @@
           p {
             width: 100%;
             display: inline-block;
-            color: rgb(255, 179, 64);
+            color: rgb(56, 55, 55);
             font-weight: 700;
             font-size: clamp(3rem, 6vw, 6rem);
             position: relative;
@@ -71,7 +71,7 @@
               width: 100%;
               display: block;
               position: absolute;
-              color: #6e6e6e;
+              color: #b3b3b3;
               top: 0;
               z-index: 1;
               white-space: nowrap;
@@ -90,7 +90,7 @@
       pointer-events: none;
 
       .description {
-        background-color: rgb(255, 179, 64);
+        background-color: rgb(56, 55, 55);
         display: flex;
         justify-content: space-between;
         align-items: center;

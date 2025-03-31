@@ -1,0 +1,9 @@
+.projectContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem; /* Add padding to ensure content is not cut off */
+  min-height: 100vh; /* Ensure the section takes up the full viewport height */
+  box-sizing: border-box; /* Include padding in height calculations */
+  overflow: hidden; /* Prevent content overflow */
+}

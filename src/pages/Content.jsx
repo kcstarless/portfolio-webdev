@@ -5,14 +5,18 @@ import AboutMe from "../components/aboutme/_AboutMe";
 import HowIWork from "../components/howiwork/_HowIWork";
 import CurrentProject from "../components/currentproject/_CurrentProject";
 
-const Content = () => {
+const Content = ({ aboutRef }) => {
   return (
     <>
       <AboutMe />
       <HowIWork />
       <CurrentProject />
-      <Project />
-      <About />
+      <div className="projectContainer">
+        <Project />
+      </div>
+      <div className="aboutContainer" ref={aboutRef}>
+        <About />
+      </div>
     </>
   );
 };
