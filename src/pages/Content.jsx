@@ -9,7 +9,7 @@ const Content = ({ aboutRef }) => {
   return (
     <>
       <AboutMe />
-      <HowIWork />
+      {/* <HowIWork /> */}
       <CurrentProject />
       <div className="projectContainer">
         <Project />
