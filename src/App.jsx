@@ -24,12 +24,12 @@ function App() {
       const videoPromises = Array.from(videos).map(
         (video) =>
           new Promise((resolve) => {
-            if (video.readyState >= 3) {
-              // Video is already loaded
+            if (video.readyState >= 4) {
+              // Video is already buffered
               resolve();
             } else {
-              // Wait for the video to load
-              video.addEventListener("loadeddata", resolve, { once: true });
+              // Wait for the video to buffer enough to play through
+              video.addEventListener("canplaythrough", resolve, { once: true });
             }
           })
       );
