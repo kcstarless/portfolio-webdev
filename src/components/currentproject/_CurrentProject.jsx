@@ -103,17 +103,6 @@ const Details = ({ project }) => {
   );
 };
 
-const Design = ({ project }) => {
-  return (
-    <div className={styles.design}>
-      <div className={styles.item}>
-        {/* <span className={styles.details}>{project.design}.</span> */}
-        <img src={project.images[0]} alt="Design" className={styles.image} />
-      </div>
-    </div>
-  );
-};
-
 const Challenges = ({ project }) => {
   const [activeSection, setActiveSection] = useState(1);
 
@@ -196,6 +185,79 @@ const Challenges = ({ project }) => {
 
       <div className={styles.challengesContent}>{renderContent()}</div>
     </div>
+  );
+};
+
+const Design = ({ project }) => {
+  const [activeSection, setActiveSection] = useState(1);
+
+  const Challenges1 = () => {
+    return (
+      <>
+        <div className={styles.designDetails}>
+          <img src={project.images[0]} alt="Design" className={styles.image} />I
+          decided to use some colors for general layout of the website. With two
+          distinct layout for mobile and desktop menu with each corresponding
+          colors. Navigation is done through accordion on desktop and bento box
+          for mobile devices. Main font used is Bebas Neue and alternative is
+          Poppins. Main logo for QVM is retained with title set as King Charles
+          Market.
+        </div>
+      </>
+    );
+  };
+
+  const Challenges2 = () => {
+    return (
+      <div className={styles.designDetails}>
+        ​Integrating Turbo Frames within accordion panels can be challenging due
+        to the need for dynamic content loading. Initially, I attempted to house
+        all content within a single Turbo Frame inside each accordion panel.
+        This approach required extensive use of Stimulus controllers and CSS to
+        manage content injection and removal, leading to increased code
+        complexity and reduced readability.​
+        <br />
+      </div>
+    );
+  };
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case 1:
+        return <Challenges1 />;
+      case 2:
+        return <Challenges2 />;
+      default:
+        return null;
+    }
+  };
+  return (
+    <div className={styles.design}>
+      <div className={styles.designSubmenu}>
+        <div
+          className={styles.designSubmenuTitle}
+          aria-expanded={activeSection === 1}
+          onClick={() => setActiveSection(1)}
+        >
+          1. MAIN UI/UX Design
+        </div>
+        <div
+          className={styles.designSubmenuTitle}
+          aria-expanded={activeSection === 2}
+          onClick={() => setActiveSection(2)}
+        >
+          2. Database Design
+        </div>
+      </div>
+
+      <div className={styles.designContent}>{renderContent()}</div>
+    </div>
+    // <div className={styles.design}>
+    //   <div className={styles.item}>
+    //     {/* <span className={styles.details}>{project.design}.</span> */}
+    //     <img src={project.images[0]} alt="Design" className={styles.image} />
+    //   </div>
+    // </div>
   );
 };
 

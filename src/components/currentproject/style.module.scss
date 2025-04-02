@@ -70,7 +70,7 @@
       height: 100%;
       padding-top: 2vh;
       padding-bottom: 2vh;
-      // border-bottom: solid 1px rgb(184, 184, 184);
+      border-bottom: solid 1px rgb(184, 184, 184);
 
       .projectDetails {
         // border: solid 1px black;
@@ -186,6 +186,39 @@
       display: flex;
       gap: 1vw;
       border: none;
+    }
+  }
+}
+
+.design {
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+  gap: 1vw;
+
+  .designSubmenu {
+    border-right: solid 1px rgb(184, 184, 184);
+    .designSubmenuTitle {
+      color: rgb(184, 184, 184);
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      &[aria-expanded="true"] {
+        color: var(--color-text-header);
+      }
+    }
+  }
+
+  .designDetails {
+    // width: 80%;
+    font-family: "Poppins";
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    color: rgb(100, 100, 100);
+    font-size: clamp(0.6rem, 1.5vw, 1.2rem);
+    white-space: pre-line;
+    .image {
+      float: left;
+      padding: 1vw;
+      width: 30%;
+      height: auto;
     }
   }
 }
