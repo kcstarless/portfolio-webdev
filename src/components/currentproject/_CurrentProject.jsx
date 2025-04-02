@@ -210,12 +210,7 @@ const Design = ({ project }) => {
   const Challenges2 = () => {
     return (
       <div className={styles.designDetails}>
-        ​Integrating Turbo Frames within accordion panels can be challenging due
-        to the need for dynamic content loading. Initially, I attempted to house
-        all content within a single Turbo Frame inside each accordion panel.
-        This approach required extensive use of Stimulus controllers and CSS to
-        manage content injection and removal, leading to increased code
-        complexity and reduced readability.​
+        In Progress...
         <br />
       </div>
     );

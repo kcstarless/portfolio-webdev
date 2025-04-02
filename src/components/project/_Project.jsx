@@ -40,7 +40,7 @@ const Project = () => {
       <div className={styles.project_header}>
         <h2 className={styles.project_header_title}>PROJECTS</h2>
         <div className={styles.project_header_viewall}>
-          <div
+          {/* <div
             className={styles.link}
             onClick={handleClick}
             data-text={isExpanding ? "←" : "→"}
@@ -48,7 +48,7 @@ const Project = () => {
             <span>
               {menuTextAnimation(isExpanding ? "VIEW LESS" : "VIEW MORE")}
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.projects_container}>

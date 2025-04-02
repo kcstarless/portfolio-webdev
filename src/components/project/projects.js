@@ -191,14 +191,14 @@ const projects = () => {
       year: 2025,
       name: "King Charles Market",
       type: "Informational & E-commerce",
-      details: `Reimagining the Queen Victoria Market website by preserving its original content and functionality while infusing it with a fresh, modern design. Although I've completed several projects before, none ever felt truly complete—this project is my chance to build a fully featured, polished experience. Inspired by Canal Street Market by Zeor.nyc, I'm adopting a similar design aesthetic for QVM.
+      details: `Reimagining the Queen Victoria Market website by preserving its original content and functionality while infusing it with a fresh, modern design. Although I've completed several projects before, none ever felt truly complete—this project is to be fully featured, polished experience. Inspired by Canal Street Market by Zeor.nyc, I'm adopting a similar design aesthetic for QVM.
               
               I've chosen to build this on Ruby on Rails 8 with Turbo and Stimulus. Initially, I considered NEXT.js and React.js, but I felt that the project didn't require heavy state management or intensive user interactions. Instead, I opted for a simple, single-stack solution. Turbo and Stimulus offer just the right amount of JavaScript for smooth, responsive interactions, while Rails provides a solid backbone and of course, my goto SASS rounds out the stack.`,
       goal: "This is the proejct goal",
       design: "Multiple color design with accordion type menu",
       images: [kcmDesign, kcmLanding, kcmLogo],
       challenges: "This is the project challenges",
-      keyFeatures: "This is the project key features",
+      keyFeatures: "In Progress...",
       outcome: "This is the project outcome",
       duration: "20%",
       tech_stack: [
