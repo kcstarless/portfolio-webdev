@@ -34,6 +34,7 @@ import iconStimulus from "../../assets/icons/Stimulus.png";
 import kcmDesign from "../../assets/project_images/current_project/kcm_design.png";
 import kcmLanding from "../../assets/project_images/current_project/kcm_landing.png";
 import kcmLogo from "../../assets/project_images/current_project/kcm_logo.svg";
+import kcmDB from "../../assets/project_images/current_project/kcm_db.png";
 
 const techStack = {
   React: { icon: iconReact, name: "React" },
@@ -196,7 +197,7 @@ const projects = () => {
               I've chosen to build this on Ruby on Rails 8 with Turbo and Stimulus. Initially, I considered NEXT.js and React.js, but I felt that the project didn't require heavy state management or intensive user interactions. Instead, I opted for a simple, single-stack solution. Turbo and Stimulus offer just the right amount of JavaScript for smooth, responsive interactions, while Rails provides a solid backbone and of course, my goto SASS rounds out the stack.`,
       goal: "This is the proejct goal",
       design: "Multiple color design with accordion type menu",
-      images: [kcmDesign, kcmLanding, kcmLogo],
+      images: [kcmDesign, kcmDB, kcmLanding, kcmLogo],
       challenges: "This is the project challenges",
       keyFeatures: "In Progress...",
       outcome: "This is the project outcome",

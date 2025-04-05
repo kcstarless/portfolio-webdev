@@ -188,40 +188,111 @@ const Challenges = ({ project }) => {
   );
 };
 
+const Design1 = ({ project }) => {
+  const [expandedImage, setExpandedImage] = useState(null);
+
+  const handleImageClick = (image) => {
+    setExpandedImage(image);
+  };
+
+  const closeExpandedImage = () => {
+    setExpandedImage(null);
+  };
+
+  return (
+    <>
+      <div className={styles.designDetails}>
+        <img
+          src={project.images[0]}
+          alt="Design"
+          className={styles.image}
+          onClick={() => handleImageClick(project.images[0])}
+        />
+        <p>
+          I decided to use some colors for general layout of the website. With
+          two distinct layout for mobile and desktop menu with each
+          corresponding colors. Navigation is done through accordion on desktop
+          and bento box for mobile devices. Main font used is Bebas Neue and
+          alternative is Poppins. Main logo for QVM is retained with title set
+          as King Charles Market.
+        </p>
+      </div>
+      {expandedImage && (
+        <div className={styles.modalOverlay} onClick={closeExpandedImage}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src={expandedImage} alt="Expanded Design" />
+            <button className={styles.closeButton} onClick={closeExpandedImage}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+const Design2 = ({ project }) => {
+  const [expandedImage, setExpandedImage] = useState(null);
+
+  const handleImageClick = (image) => {
+    setExpandedImage(image);
+  };
+
+  const closeExpandedImage = () => {
+    setExpandedImage(null);
+  };
+
+  return (
+    <>
+      <div className={styles.designDetails}>
+        <img
+          src={project.images[1]}
+          alt="Database Design"
+          className={styles.image}
+          onClick={() => handleImageClick(project.images[1])}
+        />
+        <p>
+          The database design supports an e-commerce platform with users, shops,
+          products, categories, and carts. Users can have roles like customers,
+          traders, or admins and are linked to carts and sessions. Shops store
+          details like name, location, and contact info, and are associated with
+          products and categories. Products belong to shops, are categorized via
+          a many-to-many relationship, and include attributes like name, price,
+          and stock. Carts track shopping activity, with cart items linking
+          carts to products and storing quantity and price. Relationships are
+          enforced with foreign key constraints, ensuring data integrity across
+          the system.
+        </p>
+      </div>
+      {expandedImage && (
+        <div className={styles.modalOverlay} onClick={closeExpandedImage}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src={expandedImage} alt="Expanded Database Design" />
+            <button className={styles.closeButton} onClick={closeExpandedImage}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
 const Design = ({ project }) => {
   const [activeSection, setActiveSection] = useState(1);
-
-  const Challenges1 = () => {
-    return (
-      <>
-        <div className={styles.designDetails}>
-          <img src={project.images[0]} alt="Design" className={styles.image} />I
-          decided to use some colors for general layout of the website. With two
-          distinct layout for mobile and desktop menu with each corresponding
-          colors. Navigation is done through accordion on desktop and bento box
-          for mobile devices. Main font used is Bebas Neue and alternative is
-          Poppins. Main logo for QVM is retained with title set as King Charles
-          Market.
-        </div>
-      </>
-    );
-  };
-
-  const Challenges2 = () => {
-    return (
-      <div className={styles.designDetails}>
-        In Progress...
-        <br />
-      </div>
-    );
-  };
 
   const renderContent = () => {
     switch (activeSection) {
       case 1:
-        return <Challenges1 />;
+        return <Design1 project={project} />;
       case 2:
-        return <Challenges2 />;
+        return <Design2 project={project} />;
       default:
         return null;
     }
@@ -247,12 +318,6 @@ const Design = ({ project }) => {
 
       <div className={styles.designContent}>{renderContent()}</div>
     </div>
-    // <div className={styles.design}>
-    //   <div className={styles.item}>
-    //     {/* <span className={styles.details}>{project.design}.</span> */}
-    //     <img src={project.images[0]} alt="Design" className={styles.image} />
-    //   </div>
-    // </div>
   );
 };
 
